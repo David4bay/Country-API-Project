@@ -22,20 +22,17 @@ body {
   font-size: 16px;
 }
 
-main {
-  display: flex;
-}
-
 @media (min-width: 900px) {
+  main {
+    display: flex;
+  }
   .Header {
     display: flex;
+    flex-direction: column;
     -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.25);
-    height: 100vh;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
+    min-height: 100vh;
     flex: 0 0 auto;
   }
   .List__Item {
@@ -58,9 +55,40 @@ main {
   .List__Container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 80px;
     padding: 3vw;
     height: 100%;
+  }
+  .User__Info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    width: 100%;
+  }
+  .Info__Heading {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  .DataList__Wrapper {
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: clamp(18px, 1vw, 20px);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  .Data__Item {
+    padding: 20px;
+  }
+  .Random__City {
+    display: flex;
+    flex-direction: column;
   }
 }/*# sourceMappingURL=styles.css.map */
