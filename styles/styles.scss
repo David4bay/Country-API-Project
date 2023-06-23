@@ -1,0 +1,48 @@
+// placeholder colors for now
+:root {
+    --bg: #a011ef;
+    --btn: #011000;
+    --style: #dccdcc;
+    --style2: radial-gradient(circle at center, #eaf, #fea, #fff);
+    --style3: #1ea;
+    --style4: #0af;
+    --style5: #222f2f;
+    --style12: #000;
+}
+
+// remove default padding and margin
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--style2);
+    font-size: 16px;
+}
+
+.Header {
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.Nav {
+}
+
+.List__Item {
+    padding: 12px 6px;
+    font-size: clamp(18px, 1vw, 20px);
+    list-style: none;
+}
+
+.List__Container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+    padding-bottom: 7px;
+}

@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
     <title>Countries API</title>
 </head>
 <body>
+    <!--Main element holds all content-->
     <main>
+        <!--Header holds our navigation bar-->
         <header class="Header">
             <nav class="Nav">
                 <ul class="List__Container">
+                    <!--List items on navigation bar-->
                     <li class="List__Item">
                         Home
                     </li>
@@ -18,7 +22,7 @@
                         Project Info
                     </li>
                     <li class="List__Item">
-                        Mail Me
+                        Countries List
                     </li>
                     <li class="List__Item">
                         Contact Me
@@ -26,6 +30,7 @@
                 </ul>
             </nav>
         </header>
+        <!--fetches user general info, if absent displays nothing-->
         <section class="User__Info" id="userInfo">
             <h1>Your information: </h1>
             <dl class="DataList__Wrapper">
@@ -50,9 +55,11 @@
                 </dt>
             </dl>
         </section>
+        <!--Random City is loaded on page load-->
         <section class="Random__City" id="randomCityInfo">
             h2+h3
         </section>
+        <!--Section for user country request-->
         <section>
             <form>
 
