@@ -9,7 +9,6 @@
 }
 
 body {
-  min-height: 100vh;
   -webkit-backdrop-filter: contrast(5px);
           backdrop-filter: contrast(5px);
   background: var(--style2) center center;
@@ -17,29 +16,49 @@ body {
   background-attachment: fixed;
   font-size: 16px;
   position: relative;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.Search__Wrapper {
+main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
-li {
+.Header {
+  display: block;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-bottom: 2px rgba(255, 255, 255, 0.25);
+}
+
+.List__Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 25px 0px;
+  width: 100%;
+}
+
+.List__Item {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: black;
   list-style: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px 0;
+  border-bottom: 2px solid #000;
+  transition: all 0.3s ease;
 }
 
-.Hide {
-  display: none;
+.List__Item:active {
+  transform: translateY(-4px);
 }
 
-.Received__Data {
-  background-color: #000;
-  color: #fff;
-  font-size: clamp(19px, 1vw, 20px);
-  line-height: 1.9;
+.User__Info {
+  display: flex;
+  flex-direction: column;
 }
 
 .Info__Heading {
@@ -60,6 +79,11 @@ li {
   color: #fff;
 }
 
+.DataType__Container {
+  display: flex;
+  flex-direction: column;
+}
+
 .Data__Item {
   display: flex;
   font-size: 20px;
@@ -72,6 +96,21 @@ li {
           backdrop-filter: blur(5px);
   color: #000;
   border-radius: 5px;
+}
+
+.Search__Wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40vh;
+  height: 100vh;
+}
+
+li {
+  list-style: none;
+}
+
+.Hide {
+  display: none;
 }
 
 a {

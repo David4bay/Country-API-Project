@@ -3,18 +3,18 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 async function fetchData() {
     try {
-        const response = await fetch('https://ipapico/json');
+        const response = await fetch('hts://ipapi.co/json');
         const data = await response.json();
         console.log(data);
         renderData(data);
     } catch (error) {
         console.error('Error:', error);
+        renderData(null);
     }
 }
 // test the country.json first
 
 function renderData(user) {
-    console.log(user)
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -33,13 +33,23 @@ function renderData(user) {
     const countryArea = document.getElementById('countryArea');
     const countryPopulation = document.getElementById('countryPopulation');
     const networkOrganization = document.getElementById('networkOrganization');
-    const dataItems = document.getElementsByClassName('Data__Item');
+    const infoHeading = document.getElementById('infoHeading');
+    const ipLookUp = document.getElementById('ipLookUp');
+
+    ipLookUp.addEventListener('click', () => {
+        if (!user) {
+            fetchData();
+        } else {
+            e.target;
+        }
+    });
 
     if (!user) {
         userData.style.display = 'none';
+        infoHeading.style.display = 'none';
     } else {
         userData.style.display = 'flex';
-        ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString()}</span>`;
+        ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString() ?? '...'}</span>`;
         networkIP.innerHTML += `<br/> <span class="Called__Data">${user.network}</span>`;
         cityName.innerHTML += `<br/> <span class="Called__Data">${user.city}</span>`;
         region.innerHTML += `<br/> <span class="Called__Data">${user.region}</span>`;
