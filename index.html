@@ -54,34 +54,34 @@
                 </ul>
             <!--Random City is loaded on page load-->
             <article class="Random__City" id="randomCityInfo">
-                <h2 class="CountryOfficial__Name"></h2>
-                <h3 class="CountryCommon__Name"></h3>
-                <figure class="Country__Flag">
-                    <img src="#" alt="" class="CountryFlag__Image">
-                    <figcaption class="CountryImage__Text"></figcaption>
+                <h2 class="CountryOfficial__Name" id="officialCountryName"></h2>
+                <h3 class="CountryCommon__Name" id="commonCountryName"></h3>
+                <figure class="Country__Flag" id="countryFlagContainer">
+                    <img src="#" alt="" class="CountryFlag__Image" id="countryImage">
+                    <figcaption class="CountryImage__Text" id="countryImageAltText"></figcaption>
                 </figure>
-                <strong class="Currency__Name">
+                <strong class="Currency__Name" id="currencyName">
 
                 </strong>
-                <strong class="Currency__Symbol">
+                <strong class="Currency__Symbol" id="currencySymbol">
 
                 </strong>
-                <ul class="CountryLocation__Container">
-                <li class="Location"></li>
-                <li class="LatLong"></li>
+                <ul class="CountryLocation__Container" id="countryLocation">
+                <li class="Location" id="location"></li>
+                <li class="LatLong" id="location"></li>
                 </ul>
-                <p class="Region"></p>
-                <p class="Timezone"></p>
-                <p class="SubRegion"></p>
-                <p class="UN__Member"></p>
-                <p class="StartOfWeek"></p>
+                <p class="Region" id="region"></p>
+                <p class="Timezone" id="timezone"></p>
+                <p class="SubRegion" id="subRegion"></p>
+                <p class="UN__Member" id="unMember"></p>
+                <p class="StartOfWeek" id="startOfTheWeek"></p>
             </article>
             <!--Section for user country request-->
             <article>
-                <form class="CountrySearch__Form">
+                <form class="CountrySearch__Form" id="countryForm">
                     <fieldset class="CountrySearch__Container">
                         <label for="country">Find Country</label>
-                        <input type="search" name="search" id="searchCountry" />
+                        <input type="search" name="search" id="countrySearchField" />
                         <button type="button">Search</button>
                     </fieldset>
                 </form>
