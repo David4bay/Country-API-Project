@@ -13,3 +13,6 @@ function fetchData() {
 }
 // test the country.json first
 fetchData();
+
+const data = document.querySelectorAll('dd');
+console.log(data);

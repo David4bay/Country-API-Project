@@ -20,7 +20,9 @@
 body {
     min-height: 100vh;
     width: 100%;
-    background: var(--style2);
+    background: var(--style2) center center;
+    background-size: cover;
+    background-attachment: fixed;
     font-size: 16px;
 }
 
@@ -38,9 +40,17 @@ body {
         background-color: rgba(255, 255, 255, 0.25);
         min-height: 100vh;
         flex: 0 0 auto;
-        
     }
     
+    .List__Container {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        padding: 3vw;
+        height: 100%;
+        text-align: center;
+    }
+
     .List__Item {
         text-transform: uppercase;
         font-size: clamp(18px, 1vw, 20px);
@@ -58,22 +68,16 @@ body {
         background-color:#000;
         border-bottom: 2px solid #fff;
         color: #fff;
+        width: 100%;
     }
     
-    .List__Container {
-        display: flex;
-        flex-direction: column;
-        gap: 80px;
-        padding: 3vw;
-        height: 100%;
-    }
 
     .User__Info {
         display: flex;
+        margin: auto;
         flex-direction: column;
-        align-items: center;
         padding-top: 40px;
-        width: 100%;
+
     }
 
     .Info__Heading {
@@ -81,8 +85,15 @@ body {
         letter-spacing: 5px;
         backdrop-filter: blur(5px);
         padding: 20px;
-        border-radius: 15px;
+        border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.25);
+        transition: all 0.3s ease-out;
+    }
+
+    .Info__Heading:hover {
+        background-color: #000;
+        cursor: pointer;
+        color: #fff;
     }
 
     .DataList__Wrapper {
@@ -91,11 +102,25 @@ body {
         text-transform: uppercase;
         font-size: clamp(18px, 1vw, 20px);
         padding: 20px;
+        border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.25);
+        transition: all 0.3s ease-out;
     }
 
     .Data__Item {
+        font-size: clamp(18px, 1vw, 20px);
+        font-weight: 500;
         padding: 20px;
+        margin: 30px;
+        text-align: center;
+        border: 2px solid transparent;
+        transition: all ease-out;
+    }
+
+    .Data__Item:hover {
+        cursor: pointer;
+        background: hsla(100, 0%, 100%, 0.15);
+        backdrop-filter: blur(5px);
     }
 
     .Random__City {
