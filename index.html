@@ -25,16 +25,28 @@
                     <li class="List__Item">
                         Countries List
                     </li>
+                    <a href="#userData">
                     <li class="List__Item">
-                        Contact Me
+                        Find Me
                     </li>
+                </a>
                 </ul>
             </nav>
         </header>
         <!--fetches user general info, if absent displays nothing-->
         <section class="User__Info" id="userInfo">
+            <!--Section for user country request-->
+            <article class="Search__Wrapper">
+                <form class="Search__Form" id="countryForm">
+                    <fieldset class="Search__Container">
+                        <label for="country" class="Search__Heading">Find Country</label>
+                        <input type="search" class="Search__Field" name="search" id="searchField" />
+                        <button type="button" class="Btn">Search</button>
+                    </fieldset>
+                </form>
+            </article>
+            <h1 class="Info__Heading">Your information</h1>
             <ul class="DataType__Container" id="userData">
-                    <li><h1 class="Info__Heading">Your information</h1></li>
                     <li class="Data__Item" id="ipAddress">IP Address </li>
                     <li class="Data__Item" id="networkIP">Network IP </li>
                     <li class="Data__Item" id="cityName">City </li>
@@ -76,16 +88,6 @@
                 <p class="SubRegion" id="subRegion"></p>
                 <p class="UN__Member" id="unMember"></p>
                 <p class="StartOfWeek" id="startOfTheWeek"></p>
-            </article>
-            <!--Section for user country request-->
-            <article>
-                <form class="Search__Form" id="countryForm">
-                    <fieldset class="Search__Container">
-                        <label for="country" class="Search__Heading">Find Country</label>
-                        <input type="search" class="Search__Field" name="search" id="searchField" />
-                        <button type="button" class="Btn">Search</button>
-                    </fieldset>
-                </form>
             </article>
         </section>
     </main>

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 async function fetchData() {
     try {
-        const response = await fetch('https://ipapi.co/json');
+        const response = await fetch('https://ipapico/json');
         const data = await response.json();
         console.log(data);
         renderData(data);
@@ -14,6 +14,7 @@ async function fetchData() {
 // test the country.json first
 
 function renderData(user) {
+    console.log(user)
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -35,9 +36,9 @@ function renderData(user) {
     const dataItems = document.getElementsByClassName('Data__Item');
 
     if (!user) {
-        userData.classList.add('Hide');
+        userData.style.display = 'none';
     } else {
-        userData.classList.remove('Hide');
+        userData.style.display = 'flex';
         ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString()}</span>`;
         networkIP.innerHTML += `<br/> <span class="Called__Data">${user.network}</span>`;
         cityName.innerHTML += `<br/> <span class="Called__Data">${user.city}</span>`;
@@ -51,7 +52,7 @@ function renderData(user) {
         countryCallingCode.innerHTML += `<br/> <span class="Called__Data">${user['country_calling_code']}</span>`;
         currencySymbol.innerHTML += `<br/> <span class="Called__Data">${user.currency}</span>`;
         currencyName.innerHTML += `<br/> <span class="Called__Data">${user['currency_name']}</span>`;
-        languages.innerHTML += `<br/> <span class="Called__Data">${user.languages}</span>`;
+        languages.innerHTML += `<br/> <span class="Called__Data">${String(user.languages).replace(/,/g, ' | ')}</span>`;
         countryArea.innerHTML += `<br/> <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
         countryPopulation.innerHTML += `<br/> <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
         networkOrganization.innerHTML += `<br/> <span class="Called__Data">${user.org}</span>`;

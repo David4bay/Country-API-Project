@@ -19,6 +19,14 @@ body {
   position: relative;
 }
 
+.Search__Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 li {
   list-style: none;
 }
@@ -34,6 +42,24 @@ li {
   line-height: 1.9;
 }
 
+.Info__Heading {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease-out;
+}
+
+.Info__Heading:hover {
+  background-color: #000;
+  cursor: pointer;
+  color: #fff;
+}
+
 .Data__Item {
   display: flex;
   font-size: 20px;
@@ -46,6 +72,11 @@ li {
           backdrop-filter: blur(5px);
   color: #000;
   border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 @media (min-width: 900px) {
