@@ -23,6 +23,10 @@ li {
   list-style: none;
 }
 
+.Hide {
+  display: none;
+}
+
 @media (min-width: 900px) {
   main {
     display: flex;
