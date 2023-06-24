@@ -100,11 +100,48 @@ main {
     border-radius: 5px;
 }
 
+.Search__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border: none;
+}
+
 .Search__Wrapper {
     display: flex;
     flex-direction: column;
-    padding-top: 40vh;
+    padding-top: 30vh;
     height: 100vh;
+    margin: 0 15px;
+}
+
+.Search__Heading {
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.Search__Field {
+    display: block;
+    background: hsla(100, 0%, 100%, 0.35);
+    border: none;
+    width: 100%;
+    height: 4vh;
+    padding: 20px;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: 4px solid #fff;
+    transition: all 0.4s ease;
+}
+
+.Search__Field:focus {
+    background-color:hsla(0, 0%, 0%, 0.65);
+    backdrop-filter: blur(5px);
+    color: #fff;
 }
 
 li {
