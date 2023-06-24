@@ -65,11 +65,14 @@ main {
 }
 
 .Info__Heading {
+    font-size: 17px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 5px;
     backdrop-filter: blur(5px);
-    padding: 20px;
+    width: 90vw;
+    margin: auto;
+    padding: 5px 0;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.25);
     transition: all 0.3s ease-out;
@@ -85,19 +88,35 @@ main {
 .DataType__Container {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    width: 90vw;
+    margin: 20px auto;
+    backdrop-filter: blur(5px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease-out;
 }
 
 .Data__Item {
     display: flex;
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 1px;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     background-color: hsla(100, 0%, 100%, 0.35);
     backdrop-filter: blur(5px);
     color: #000;
     border-radius: 5px;
+    padding: 12px 0;
+}
+
+.Data__Item:hover {
+    cursor: pointer;
+    background: hsla(100, 0%, 100%, 0.15);
+    backdrop-filter: blur(5px);
 }
 
 .Search__Container {
@@ -142,6 +161,21 @@ main {
     background-color:hsla(0, 0%, 0%, 0.65);
     backdrop-filter: blur(5px);
     color: #fff;
+}
+
+.Btn {
+    display: block;
+    width: 25vw;
+    padding: 12px;
+    background: none;
+    font-size: clamp(19px, 1vw, 20px);
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+}
+
+.Btn:hover {
+    color: #fff;
+    background-color: #000;
 }
 
 li {
@@ -341,7 +375,6 @@ a {
     .Btn:hover {
         color: #fff;
         background-color: #000;
-
     }
 
 }

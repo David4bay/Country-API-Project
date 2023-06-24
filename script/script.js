@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 async function fetchData() {
     try {
-        const response = await fetch('hts://ipapi.co/json');
+        const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
         console.log(data);
         renderData(data);
