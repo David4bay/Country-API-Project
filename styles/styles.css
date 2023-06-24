@@ -20,181 +20,162 @@ body {
   width: 100%;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
+@media (max-width: 899px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  .Header {
+    display: block;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    border-bottom: 2px rgba(255, 255, 255, 0.25);
+  }
+  .List__Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 25px 0px;
+    width: 100%;
+  }
+  .List__Item {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: black;
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+    border-bottom: 2px solid #000;
+    transition: all 0.3s ease;
+  }
+  .List__Item:active {
+    transform: translateY(-4px);
+  }
+  .User__Info {
+    display: flex;
+    flex-direction: column;
+  }
+  .Info__Heading {
+    font-size: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    width: 90vw;
+    margin: auto;
+    padding: 12px 0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.35);
+    transition: all 0.3s ease-out;
+  }
+  .Info__Heading:hover {
+    background-color: #000;
+    cursor: pointer;
+    color: #fff;
+  }
+  .DataType__Container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    width: 90vw;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease-out;
+  }
+  .Data__Item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: hsla(100deg, 0%, 100%, 0.35);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    color: #000;
+    border-radius: 5px;
+    padding: 12px 0;
+  }
+  .Data__Item:hover {
+    cursor: pointer;
+    background: hsla(100deg, 0%, 100%, 0.15);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+  }
+  .Search__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border: none;
+  }
+  .Search__Wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30vh;
+    height: 100vh;
+    margin: 0 15px;
+  }
+  .Search__Heading {
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 5px;
+  }
+  .Search__Field {
+    display: block;
+    background: hsla(100deg, 0%, 100%, 0.35);
+    border: none;
+    width: 100%;
+    height: 4vh;
+    padding: 20px;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: 4px solid #fff;
+    transition: all 0.4s ease;
+  }
+  .Search__Field:focus {
+    background-color: hsla(0deg, 0%, 0%, 0.65);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    color: #fff;
+  }
+  .Btn {
+    display: block;
+    width: 25vw;
+    padding: 12px;
+    background: none;
+    font-size: clamp(19px, 1vw, 20px);
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+  }
+  .Btn:hover {
+    color: #fff;
+    background-color: #000;
+  }
+  li {
+    list-style: none;
+  }
+  .Hide {
+    display: none;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 }
-
-.Header {
-  display: block;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  border-bottom: 2px rgba(255, 255, 255, 0.25);
-}
-
-.List__Container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 25px 0px;
-  width: 100%;
-}
-
-.List__Item {
-  text-transform: uppercase;
-  font-size: 15px;
-  color: black;
-  list-style: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 5px 0;
-  border-bottom: 2px solid #000;
-  transition: all 0.3s ease;
-}
-
-.List__Item:active {
-  transform: translateY(-4px);
-}
-
-.User__Info {
-  display: flex;
-  flex-direction: column;
-}
-
-.Info__Heading {
-  font-size: 17px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  width: 90vw;
-  margin: auto;
-  padding: 12px 0;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.35);
-  transition: all 0.3s ease-out;
-}
-
-.Info__Heading:hover {
-  background-color: #000;
-  cursor: pointer;
-  color: #fff;
-}
-
-.DataType__Container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 10px;
-  width: 90vw;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.25);
-  transition: all 0.3s ease-out;
-}
-
-.Data__Item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background-color: hsla(100deg, 0%, 100%, 0.35);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  color: #000;
-  border-radius: 5px;
-  padding: 12px 0;
-}
-
-.Data__Item:hover {
-  cursor: pointer;
-  background: hsla(100deg, 0%, 100%, 0.15);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-}
-
-.Search__Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 11px;
-  border: none;
-}
-
-.Search__Wrapper {
-  display: flex;
-  flex-direction: column;
-  padding-top: 30vh;
-  height: 100vh;
-  margin: 0 15px;
-}
-
-.Search__Heading {
-  display: block;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 5px;
-}
-
-.Search__Field {
-  display: block;
-  background: hsla(100deg, 0%, 100%, 0.35);
-  border: none;
-  width: 100%;
-  height: 4vh;
-  padding: 20px;
-  color: #000;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border-bottom: 4px solid #fff;
-  transition: all 0.4s ease;
-}
-
-.Search__Field:focus {
-  background-color: hsla(0deg, 0%, 0%, 0.65);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  color: #fff;
-}
-
-.Btn {
-  display: block;
-  width: 25vw;
-  padding: 12px;
-  background: none;
-  font-size: clamp(19px, 1vw, 20px);
-  letter-spacing: 2px;
-  transition: all 0.4s ease;
-}
-
-.Btn:hover {
-  color: #fff;
-  background-color: #000;
-}
-
-li {
-  list-style: none;
-}
-
-.Hide {
-  display: none;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
-}
-
 @media (min-width: 900px) {
   main {
     display: flex;
@@ -262,7 +243,6 @@ a {
     flex-wrap: wrap;
     justify-content: center;
     width: 50vw;
-    margin-top: 20px;
     -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
     text-transform: uppercase;
@@ -270,9 +250,6 @@ a {
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.25);
     transition: all 0.3s ease-out;
-  }
-  .DataType__Container:hover {
-    margin-top: 0px;
   }
   .Data__Item {
     font-size: clamp(18px, 1vw, 20px);
@@ -283,6 +260,7 @@ a {
     border: 2px solid transparent;
     transition: all ease-out;
     list-style: none;
+    border-bottom: 2px solid #000;
   }
   .Data__Item:hover {
     cursor: pointer;
@@ -298,7 +276,11 @@ a {
     list-style: none;
   }
   .Search__Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 50vw;
+    height: 100vh;
   }
   .Search__Container {
     display: flex;

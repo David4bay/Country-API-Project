@@ -22,7 +22,8 @@ body {
     width: 100%;
 }
 
-
+@media (max-width: 899px) {
+    
 main {
     display: flex;
     flex-direction: column;
@@ -194,6 +195,7 @@ a {
     text-decoration: none;
     color: #000;
 }
+}
 
 // media query for desktop screen sizes
 @media (min-width: 900px) {
@@ -280,18 +282,12 @@ a {
         flex-wrap: wrap;
         justify-content: center;
         width: 50vw;
-        margin-top: 20px;
         backdrop-filter: blur(5px);
         text-transform: uppercase;
         font-size: clamp(18px, 1vw, 20px);
         border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.25);
         transition: all 0.3s ease-out;
-    }
-
-    // General user hover style
-    .DataType__Container:hover {
-        margin-top: 0px;
     }
 
     // General user info data
@@ -304,6 +300,7 @@ a {
         border: 2px solid transparent;
         transition: all ease-out;
         list-style: none;
+        border-bottom: 2px solid #000;
     }
 
     // General user info hover styles
@@ -324,7 +321,11 @@ a {
     }
 
     .Search__Form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 50vw;
+        height: 100vh;
     }
 
     .Search__Container {
@@ -381,6 +382,3 @@ a {
     }
 
 }
-
-
-
