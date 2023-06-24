@@ -258,6 +258,12 @@ body {
   .DataType__Container:hover .Data__Item {
     border-bottom: 2px solid #fff;
   }
+  .Called__Data {
+    transition: color 0.3s ease-out;
+  }
+  .DataType__Container:hover .Called__Data {
+    color: lightgreen;
+  }
   .Data__Item {
     font-size: clamp(18px, 1vw, 20px);
     font-weight: 500;
