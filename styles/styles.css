@@ -1,12 +1,5 @@
 :root {
-  --bg: #a011ef;
-  --btn: #011000;
-  --style: #dccdcc;
   --style2: radial-gradient(circle at center, #eaf, #fea, #fff);
-  --style3: #1ea;
-  --style4: #0af;
-  --style5: #111111;
-  --style12: #000;
 }
 
 * {
@@ -17,7 +10,6 @@
 
 body {
   min-height: 100vh;
-  width: 100%;
   background: var(--style2) center center;
   background-size: cover;
   background-attachment: fixed;
