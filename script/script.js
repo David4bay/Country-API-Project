@@ -2,12 +2,13 @@
 document.addEventListener('DOMContentLoaded', fetchData);
 
 function fetchData() {
-    return fetch('./iptest.json')
+    return fetch('../country.json')
     .then(function (response) { 
         return response.json(); 
     })
     .then(function (data) { 
-        console.log(data); 
+        console.log(data);
+        renderData();
     }
     ).catch(function (error) {
         console.error('Error:', error);
@@ -16,6 +17,7 @@ function fetchData() {
 // test the country.json first
 
 function renderData(user) {
+    const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIp');
     const cityName = document.getElementById('cityName');
@@ -34,5 +36,9 @@ function renderData(user) {
     const countryPopulation = document.getElementById('countryPopulation');
     const networkOrganization = document.getElementById('networkOrganization');
 
-    
+    if (!user) {
+        userData.style.display = 'none';
+    } else {
+        
+    }
 }

@@ -32,8 +32,8 @@
         </header>
         <!--fetches user general info, if absent displays nothing-->
         <section class="User__Info" id="userInfo">
-            <h1 class="Info__Heading">Your information</h1>
-                <ul class="DataType__Container">
+            <ul class="DataType__Container" id="userData">
+                    <li><h1 class="Info__Heading">Your information</h1></li>
                     <li class="Data__Item" id="ipAddress">IP Address </li>
                     <li class="Data__Item" id="networkIP">Network IP </li>
                     <li class="Data__Item" id="cityName">City </li>
@@ -78,11 +78,11 @@
             </article>
             <!--Section for user country request-->
             <article>
-                <form class="CountrySearch__Form" id="countryForm">
-                    <fieldset class="CountrySearch__Container">
-                        <label for="country">Find Country</label>
-                        <input type="search" name="search" id="countrySearchField" />
-                        <button type="button">Search</button>
+                <form class="Search__Form" id="countryForm">
+                    <fieldset class="Search__Container">
+                        <label for="country" class="Search__Heading">Find Country</label>
+                        <input type="search" class="Search__Field" name="search" id="searchField" />
+                        <button type="button" class="Btn">Search</button>
                     </fieldset>
                 </form>
             </article>
