@@ -150,12 +150,18 @@ li {
     width: 100%;
     height: 4vh;
     padding: 20px;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: clamp(19px, 1vw, 22px);
     border-bottom: 4px solid #fff;
+    transition: all 0.4s ease;
+    letter-spacing: 2px;
   }
   .Search__Field:focus {
     background-color: hsla(0deg, 0%, 0%, 0.65);
     -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
+    color: #fff;
   }
   .Btn {
     display: block;
