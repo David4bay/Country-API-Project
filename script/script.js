@@ -32,12 +32,12 @@ function renderData(user) {
     const countryArea = document.getElementById('countryArea');
     const countryPopulation = document.getElementById('countryPopulation');
     const networkOrganization = document.getElementById('networkOrganization');
+    const dataItems = document.getElementsByClassName('Data__Item');
 
     if (!user) {
         userData.classList.add('Hide');
     } else {
         userData.classList.remove('Hide');
-        console.log(user.network);
         ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString()}</span>`;
         networkIP.innerHTML += `<br/> <span class="Called__Data">${user.network}</span>`;
         cityName.innerHTML += `<br/> <span class="Called__Data">${user.city}</span>`;
@@ -52,7 +52,7 @@ function renderData(user) {
         currencySymbol.innerHTML += `<br/> <span class="Called__Data">${user.currency}</span>`;
         currencyName.innerHTML += `<br/> <span class="Called__Data">${user['currency_name']}</span>`;
         languages.innerHTML += `<br/> <span class="Called__Data">${user.languages}</span>`;
-        countryArea.innerHTML += `<br/> <span class="Called__Data">${user['counry_area']}</span>`;
+        countryArea.innerHTML += `<br/> <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
         countryPopulation.innerHTML += `<br/> <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
         networkOrganization.innerHTML += `<br/> <span class="Called__Data">${user.org}</span>`;
     }
