@@ -1,5 +1,5 @@
 :root {
-  --style2: radial-gradient(circle at center, #eaf, #fea, #fff);
+  --style2: radial-gradient(circle at center, #eaf, #fea, rgba(255, 255, 255, 0.53) );
 }
 
 * {
@@ -9,8 +9,6 @@
 }
 
 body {
-  -webkit-backdrop-filter: contrast(5px);
-          backdrop-filter: contrast(5px);
   background: var(--style2) center center;
   background-size: cover;
   background-attachment: fixed;
@@ -24,6 +22,7 @@ body {
   main {
     display: flex;
     flex-direction: column;
+    max-width: 1880px;
   }
   .Header {
     display: block;
@@ -178,9 +177,6 @@ body {
   li {
     list-style: none;
   }
-  .Hide {
-    display: none;
-  }
   a {
     text-decoration: none;
     color: #000;
@@ -189,6 +185,7 @@ body {
 @media (min-width: 900px) {
   main {
     display: flex;
+    max-width: 1880px;
   }
   .Header {
     display: flex;
@@ -275,9 +272,12 @@ body {
     color: lightgreen;
   }
   .Data__Item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     font-size: clamp(18px, 1vw, 20px);
     font-weight: 500;
-    padding: 20px;
+    padding: 20px 20px 15px 20px;
     margin: 30px;
     text-align: center;
     border: 2px solid transparent;

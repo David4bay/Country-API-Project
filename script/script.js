@@ -1,9 +1,20 @@
 // Waits for content to load
 document.addEventListener('DOMContentLoaded', fetchData);
 
+// Listens for a submit event
+document.addEventListener('submit', loadCountry);
+
+// Waits for a click event then performs actions
+document.addEventListener('click', (e) => {
+    if (e.target.type === 'button') {
+        loadCountry(e);
+    }
+})
+
+// test the country.json first
 async function fetchData() {
     try {
-        const response = await fetch('https://ipapi.co/json');
+        const response = await fetch('country.json');
         const data = await response.json();
         console.log(data);
         renderData(data);
@@ -12,8 +23,18 @@ async function fetchData() {
         renderData(null);
     }
 }
-// test the country.json first
 
+// https://ipapi.co/json
+function loadCountry(e) {
+    e.preventDefault();
+    const searchFieldCountry = document.getElementById('searchField').value;
+    console.log(searchFieldCountry);
+    fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`).then(res => res.json()).then(data => {
+        console.log(data);
+    })
+}
+
+// renders the users ip info
 function renderData(user) {
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
@@ -36,11 +57,10 @@ function renderData(user) {
     const infoHeading = document.getElementById('infoHeading');
     const ipLookUp = document.getElementById('ipLookUp');
 
+    // ipLookup is id of link tag that scrolls to ip info
     ipLookUp.addEventListener('click', () => {
         if (!user) {
             fetchData();
-        } else {
-            e.target;
         }
     });
 
@@ -49,7 +69,7 @@ function renderData(user) {
         infoHeading.style.display = 'none';
     } else {
         userData.style.display = 'flex';
-        ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString() ?? '...'}</span>`;
+        ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString()}</span>`;
         networkIP.innerHTML += `<br/> <span class="Called__Data">${user.network}</span>`;
         cityName.innerHTML += `<br/> <span class="Called__Data">${user.city}</span>`;
         region.innerHTML += `<br/> <span class="Called__Data">${user.region}</span>`;
@@ -62,7 +82,7 @@ function renderData(user) {
         countryCallingCode.innerHTML += `<br/> <span class="Called__Data">${user['country_calling_code']}</span>`;
         currencySymbol.innerHTML += `<br/> <span class="Called__Data">${user.currency}</span>`;
         currencyName.innerHTML += `<br/> <span class="Called__Data">${user['currency_name']}</span>`;
-        languages.innerHTML += `<br/> <span class="Called__Data">${String(user.languages).replace(/,/g, ' | ')}</span>`;
+        languages.innerHTML += `<br/> <span class="Called__Data">${String(user.languages).replaceAll(',', ' | ')}</span>`;
         countryArea.innerHTML += `<br/> <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
         countryPopulation.innerHTML += `<br/> <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
         networkOrganization.innerHTML += `<br/> <span class="Called__Data">${user.org}</span>`;

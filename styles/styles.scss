@@ -1,6 +1,6 @@
 // placeholder colors for now
 :root {
-    --style2: radial-gradient(circle at center, #eaf, #fea, #fff);
+    --style2: radial-gradient(circle at center, #eaf, #fea, rgba(255, 255, 255, 0.53) );
 }
 
 // remove default padding and margin
@@ -12,7 +12,6 @@
 
 // general body styles
 body {
-    backdrop-filter: contrast(5px);
     background: var(--style2) center center;
     background-size: cover;
     background-attachment: fixed;
@@ -24,18 +23,21 @@ body {
 
 @media (max-width: 899px) {
     
+// main where all elements reside
 main {
     display: flex;
     flex-direction: column;
+    max-width: 1880px;
 }
 
-
+// header wrapping nav (mobile)
 .Header {
     display: block;
     backdrop-filter: blur(5px);
     border-bottom: 2px rgba(255, 255, 255, 0.25);
 }
 
+// Unordered list container
 .List__Container {
     display: flex;
     flex-direction: row;
@@ -44,6 +46,7 @@ main {
     width: 100%;
 }
 
+// Nav list items
 .List__Item {
     text-transform: uppercase;
     font-size: 15px;
@@ -56,15 +59,18 @@ main {
     transition: all 0.3s ease;
 }
 
+// Nav list items on click (mobile)
 .List__Item:active {
     transform: translateY(-4px);
 }
 
+// User info at
 .User__Info {
     display: flex;
     flex-direction: column;
 }
 
+// user info heading
 .Info__Heading {
     font-size: 17px;
     text-align: center;
@@ -86,6 +92,7 @@ main {
     color: #fff;
 }
 
+// Data container styles
 .DataType__Container {
     display: flex;
     flex-direction: column;
@@ -106,19 +113,23 @@ main {
     transition: all 0.3s ease-out;
 }
 
+// Data item effects when data container is hovered
 .DataType__Container:hover .Data__Item {
     background-color: #000;
     color: #fff;
 }
 
+// Called data transition effects
 .Called__Data {
     transition: color 0.3s ease-out;
 }
 
+// Called data effects when data container is hovered
 .DataType__Container:hover .Called__Data {
     color: lightgreen;
 }
 
+// data items
 .Data__Item {
     display: flex;
     flex-direction: column;
@@ -130,12 +141,14 @@ main {
     padding: 12px 0;
 }
 
+// Data item hover effects
 .Data__Item:hover {
     cursor: pointer;
     background: hsla(100, 0%, 100%, 0.15);
     backdrop-filter: blur(5px);
 }
 
+// Search field container
 .Search__Container {
     display: flex;
     flex-direction: column;
@@ -145,6 +158,7 @@ main {
     border: none;
 }
 
+// Search field wrapper
 .Search__Wrapper {
     display: flex;
     flex-direction: column;
@@ -153,6 +167,7 @@ main {
     margin: 0 15px;
 }
 
+// Search field heading
 .Search__Heading {
     display: block;
     text-transform: uppercase;
@@ -161,6 +176,7 @@ main {
     letter-spacing: 5px;
 }
 
+// Search field
 .Search__Field {
     display: block;
     background: hsla(100, 0%, 100%, 0.35);
@@ -174,12 +190,14 @@ main {
     transition: all 0.4s ease;
 }
 
+// Search field focus effects
 .Search__Field:focus {
     background-color:hsla(0, 0%, 0%, 0.65);
     backdrop-filter: blur(5px);
     color: #fff;
 }
 
+// Search button 
 .Btn {
     display: block;
     width: 25vw;
@@ -190,20 +208,18 @@ main {
     transition: all 0.4s ease;
 }
 
+// Search button hover effects
 .Btn:hover {
     color: #fff;
     background-color: #000;
 }
 
+// List items holding data called
 li {
     list-style: none;
 }
 
-.Hide {
-    display: none;
-}
-
-
+// Link that scrolls to user ip
 a {
     text-decoration: none;
     color: #000;
@@ -216,6 +232,7 @@ a {
     // main element display style
     main {
         display: flex;
+        max-width: 1880px;
     }
 
     // navigation header styles
@@ -303,28 +320,35 @@ a {
         transition: all 0.3s ease-out;
     }
 
+    // Data container hover effects
     .DataType__Container:hover {
         background-color: #000;
         color: #fff;
     }
 
+    // Effect of data item when data container is hovered
     .DataType__Container:hover .Data__Item {
         border-bottom: 2px solid #fff;
     }
 
+    // Data called from ip
     .Called__Data {
         transition: color 0.3s ease-out;
     }
 
+    // Datatype hover effects
     .DataType__Container:hover .Called__Data {
         color: lightgreen;
     }
 
     // General user info data
     .Data__Item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         font-size: clamp(18px, 1vw, 20px);
         font-weight: 500;
-        padding: 20px;
+        padding: 20px 20px 15px 20px;
         margin: 30px;
         text-align: center;
         border: 2px solid transparent;
@@ -346,10 +370,12 @@ a {
         flex-direction: column;
     }
 
+    // Latitude and longitude 
     .Location, .LatLong {
         list-style: none;
     }
 
+    // Search form
     .Search__Form {
         display: flex;
         flex-direction: column;
@@ -358,6 +384,7 @@ a {
         height: 100vh;
     }
 
+    // Search container
     .Search__Container {
         display: flex;
         flex-direction: column;
@@ -367,6 +394,7 @@ a {
         border: none;
     }
 
+    // Search field heading 
     .Search__Heading {
         display: block;
         text-transform: uppercase;
@@ -375,6 +403,7 @@ a {
         letter-spacing: 5px;
     }
 
+    // Search field
     .Search__Field {
         display: block;
         background: hsla(100, 0%, 100%, 0.35);
@@ -396,6 +425,7 @@ a {
         color: #fff;
     }
 
+    // Search button
     .Btn {
         display: block;
         width: 25vw;
@@ -411,9 +441,9 @@ a {
         background-color: #000;
     }
 
+    // Link tag for scrolling to user ip
     a {
         text-decoration: none;
         color: #000;
     }
-
 }
