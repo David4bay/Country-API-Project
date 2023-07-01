@@ -1,15 +1,26 @@
 // Waits for content to load
-document.addEventListener('DOMContentLoaded', fetchData);
+// document.addEventListener('DOMContentLoaded', fetchData);
 
 // Listens for a submit event
-document.addEventListener('submit', loadCountry);
+document.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await loadCountry();
+})
 
 // Waits for a click event then performs actions
-document.addEventListener('click', (e) => {
+document.addEventListener('click', async (e) => {
+    e.preventDefault();
     if (e.target.type === 'button') {
-        loadCountry(e);
+        await loadCountry();
     }
-})
+    if (e.target.type === undefined || e.target.type === null) {
+        const body = document.body;
+        const modal = document.getElementById('countryDataContainer');
+        if (modal) {
+            body.removeChild(modal);
+        }
+    }
+    })
 
 // test the country.json first
 async function fetchData() {
@@ -17,25 +28,27 @@ async function fetchData() {
         const response = await fetch('country.json');
         const data = await response.json();
         console.log(data);
-        renderData(data);
+        await renderUserData(data);
     } catch (error) {
         console.error('Error:', error);
-        renderData(null);
     }
 }
 
 // https://ipapi.co/json
-function loadCountry(e) {
-    e.preventDefault();
+async function loadCountry() {
     const searchFieldCountry = document.getElementById('searchField').value;
-    console.log(searchFieldCountry);
-    fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`).then(res => res.json()).then(data => {
+    try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`);
+        const data = await response.json();
         console.log(data);
-    })
+        await renderCountry(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 // renders the users ip info
-function renderData(user) {
+function renderUserData(user) {
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -57,34 +70,139 @@ function renderData(user) {
     const infoHeading = document.getElementById('infoHeading');
     const ipLookUp = document.getElementById('ipLookUp');
 
-    // ipLookup is id of link tag that scrolls to ip info
+    // find me button, scrolls to and loads up user info
     ipLookUp.addEventListener('click', () => {
         if (!user) {
-            fetchData();
+            loadCountry();
         }
     });
 
+    // if user data isn't present hide section with user ip info
     if (!user) {
         userData.style.display = 'none';
         infoHeading.style.display = 'none';
     } else {
+        // conditionally render user ip info
         userData.style.display = 'flex';
-        ipAddress.innerHTML += `<br/> <span class="Called__Data">${user.ip.toString()}</span>`;
-        networkIP.innerHTML += `<br/> <span class="Called__Data">${user.network}</span>`;
-        cityName.innerHTML += `<br/> <span class="Called__Data">${user.city}</span>`;
-        region.innerHTML += `<br/> <span class="Called__Data">${user.region}</span>`;
-        countryName.innerHTML += `<br/> <span class="Called__Data">${user['country_name']}</span>`;
-        countryCapital.innerHTML += `<br/> <span class="Called__Data">${user['country_capital']}</span>`;
-        countryLatitude.innerHTML += `<br/> <span class="Called__Data">${user.latitude.toString()}</span>`;
-        countryLongitude.innerHTML += `<br/> <span class="Called__Data">${user.longitude.toString()}</span>`;
-        timezone.innerHTML += `<br/> <span class="Called__Data">${user.timezone}</span>`;
-        utcOffset.innerHTML += `<br/> <span class="Called__Data">${user['utc_offset']}</span>`;
-        countryCallingCode.innerHTML += `<br/> <span class="Called__Data">${user['country_calling_code']}</span>`;
-        currencySymbol.innerHTML += `<br/> <span class="Called__Data">${user.currency}</span>`;
-        currencyName.innerHTML += `<br/> <span class="Called__Data">${user['currency_name']}</span>`;
-        languages.innerHTML += `<br/> <span class="Called__Data">${String(user.languages).replaceAll(',', ' | ')}</span>`;
-        countryArea.innerHTML += `<br/> <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
-        countryPopulation.innerHTML += `<br/> <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
-        networkOrganization.innerHTML += `<br/> <span class="Called__Data">${user.org}</span>`;
+        ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
+        networkIP.innerHTML += ` <span class="Called__Data">${user.network}</span>`;
+        cityName.innerHTML += ` <span class="Called__Data">${user.city}</span>`;
+        region.innerHTML += ` <span class="Called__Data">${user.region}</span>`;
+        countryName.innerHTML += ` <span class="Called__Data">${user['country_name']}</span>`;
+        countryCapital.innerHTML += ` <span class="Called__Data">${user['country_capital']}</span>`;
+        countryLatitude.innerHTML += ` <span class="Called__Data">${user.latitude.toString()}</span>`;
+        countryLongitude.innerHTML += ` <span class="Called__Data">${user.longitude.toString()}</span>`;
+        timezone.innerHTML += ` <span class="Called__Data">${user.timezone}</span>`;
+        utcOffset.innerHTML += ` <span class="Called__Data">${user['utc_offset']}</span>`;
+        countryCallingCode.innerHTML += ` <span class="Called__Data">${user['country_calling_code']}</span>`;
+        currencySymbol.innerHTML += ` <span class="Called__Data">${user.currency}</span>`;
+        currencyName.innerHTML += ` <span class="Called__Data">${user['currency_name']}</span>`;
+        languages.innerHTML += ` <span class="Called__Data">${String(user.languages).replaceAll(',', ' | ')}</span>`;
+        countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
+        countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
+        networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
+    }
+}
+
+// render list items from searched country
+function renderCountry(data) {
+    if (data !== null || data !== undefined) {
+        const div = document.createElement('div');
+        const body = document.body;
+        body.appendChild(div);
+        div.setAttribute('class', 'CountryData__Container');
+        div.setAttribute('id', 'countryDataContainer');
+        for (let i = 0; i < 21; i++) {
+            const li = document.createElement('li');
+            li.setAttribute('class', 'Country__Data');
+            div.appendChild(li);
+        }
+    }
+    // makes call to update list items with data
+    updateData(data);
+}
+
+// update list items with data for country searched
+function updateData(data) {
+    const countryReceivedData = document.getElementsByClassName('Country__Data');
+    if (countryReceivedData) {
+        const currency = data[0].currencies;
+        const languageInfo = data[0].languages;
+        let currencyName;
+        let currencySymbol;
+        let languageSpoken;
+        for (const key in currency) {
+            currencyName = currency[key].name;
+            currencySymbol = currency[key].symbol;
+        }
+        for (const key in languageInfo) {
+            languageSpoken = languageInfo[key]
+        }
+        for (let i = 0; i < countryReceivedData.length; i++) {
+            switch(i) {
+                case 0:
+                countryReceivedData[i].innerHTML += `Coat Of Arms<img class="Called__Country CoatOfArms" src=${data[0].coatOfArms.png} width="200" />`;
+                break;
+                case 1:
+                countryReceivedData[i].innerHTML += `Common Name<span class="Called__Country"> ${data[0].name.common}</span>`;
+                break;
+                case 2:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> ${data[0].name.official}</span>`;
+                break;
+                case 3:
+                countryReceivedData[i].innerHTML += `Area<span class="Called__Country"> ${data[0].area.toLocaleString('en-US').toString()}</span>`;
+                break;
+                case 4:
+                countryReceivedData[i].innerHTML += `Border<span class="Called__Country"> ${data[0].borders.map((item) => item)}</span>`;
+                break;                    
+                case 5:
+                countryReceivedData[i].innerHTML += `Capital<span class="Called__Country"> ${data[0].capital}</span>`;
+                break;
+                case 6:
+                countryReceivedData[i].innerHTML += `Currency Name<span class="Called__Country">${currencyName}</span><span class="Called__Country Space">Currency Symbol<br/>${currencySymbol}</span>`;
+                break;
+                case 7:
+                countryReceivedData[i].innerHTML += `Flag: <img class="Called__Country Flag" src=${data[0].flags.png} width="200" />`   
+                break;
+                case 8:
+                countryReceivedData[i].innerHTML += `Languages<span class="Called__Country">${languageSpoken}</span>`
+                break;
+                case 9:
+                countryReceivedData[i].innerHTML += `<span class="Called__Country">${data[0].latlng.map((item, idx) => idx === 0 ? `latitude ${item}` : `longitude ${item}`)}<span>`
+                break;
+                case 11:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 12:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 13:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 14:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 15:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 16:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 17:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 18:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 19:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                case 20:
+                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
+                break;
+                default:
+                break;
+            }
+        }
     }
 }
