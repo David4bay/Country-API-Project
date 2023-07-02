@@ -51,6 +51,7 @@ async function loadCountry() {
 
 // renders the users ip info
 function renderUserData(user) {
+    console.log(user)
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -132,7 +133,7 @@ function updateData(data) {
 
     // checking if data exists before extracting data from the api
     if (countryReceivedData) {
-        const currency = data[0].currencies;
+        const currency = data[0]?.currencies;
         const languageInfo = data[0].languages;
         let currencyName;
         let currencySymbol;
