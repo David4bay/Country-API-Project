@@ -4,10 +4,14 @@ This project makes use of [REST Countries](https://restcountries.com/) api endpo
 
 ## NOTE
 
-The country.json file is to test api endpoints using a slice of the api so there aren't too many actual requests going to the live one.
+The country.json file is to test api endpoints using a slice of the api so there aren't too many actual requests going to the live one. Project still in progress.
 
 ## Technologies Used
 
 - Semantic HTML
 - CSS - Using SASS preprocessor
 - JavaScript
+
+### Live Site
+
+-[Netlify Site](https://countrywikiapp.netlify.app)
