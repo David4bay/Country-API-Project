@@ -11,5 +11,3 @@ The country.json file is to test api endpoints using a slice of the api so there
 - Semantic HTML
 - CSS - Using SASS preprocessor
 - JavaScript
-
-
