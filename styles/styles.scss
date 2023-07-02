@@ -232,7 +232,7 @@ a {
     letter-spacing: 2px;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    min-height: 100vh;
     background-color: hsla(0, 0%, 100%, 0.9);
     backdrop-filter: blur(5px);
     position: absolute;
@@ -242,6 +242,7 @@ a {
     width: 65vw;
     padding: 50px;
     gap: 30px;
+    overflow: scroll;
 }
 
 .CountryData__Container:hover {
@@ -505,7 +506,7 @@ a {
         letter-spacing: 2px;
         flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
+        min-height: 100vh;
         background-color: hsla(0, 0%, 100%, 0.9);
         backdrop-filter: blur(5px);
         position: absolute;

@@ -1,3 +1,5 @@
+// Toggle user info variable
+let toggleUserIp = false;
 
 // Waits for content to load
 document.addEventListener('DOMContentLoaded', fetchData);
@@ -10,7 +12,6 @@ document.addEventListener('submit', async (e) => {
 
 // Waits for a click event then performs actions
 document.addEventListener('click', async (e) => {
-    e.preventDefault();
     if (e.target.type === 'button') {
         await loadCountry();
     }
@@ -26,7 +27,7 @@ document.addEventListener('click', async (e) => {
 // test the country.json first
 async function fetchData() {
     try {
-        const response = await fetch('country.json');
+        const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
         console.log(data);
         await renderUserData(data);
@@ -77,7 +78,6 @@ function renderUserData(user) {
             loadCountry();
         }
     });
-
     // if user data isn't present hide section with user ip info
     if (!user) {
         userData.style.display = 'none';
