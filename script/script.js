@@ -1,5 +1,6 @@
+
 // Waits for content to load
-// document.addEventListener('DOMContentLoaded', fetchData);
+document.addEventListener('DOMContentLoaded', fetchData);
 
 // Listens for a submit event
 document.addEventListener('submit', async (e) => {
@@ -82,6 +83,7 @@ function renderUserData(user) {
         userData.style.display = 'none';
         infoHeading.style.display = 'none';
     } else {
+
         // conditionally render user ip info
         userData.style.display = 'flex';
         ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
@@ -118,26 +120,36 @@ function renderCountry(data) {
             div.appendChild(li);
         }
     }
+
     // makes call to update list items with data
     updateData(data);
 }
 
 // update list items with data for country searched
 function updateData(data) {
+
     const countryReceivedData = document.getElementsByClassName('Country__Data');
+
+    // checking if data exists before extracting data from the api
     if (countryReceivedData) {
         const currency = data[0].currencies;
         const languageInfo = data[0].languages;
         let currencyName;
         let currencySymbol;
         let languageSpoken;
+
+        // getting the dynamic properties of currencies
         for (const key in currency) {
             currencyName = currency[key].name;
             currencySymbol = currency[key].symbol;
         }
+
+        // accessing the dynamic language key
         for (const key in languageInfo) {
             languageSpoken = languageInfo[key]
         }
+
+        // renders searched country info 
         for (let i = 0; i < countryReceivedData.length; i++) {
             switch(i) {
                 case 0:
@@ -168,7 +180,7 @@ function updateData(data) {
                 countryReceivedData[i].innerHTML += `Languages<span class="Called__Country">${languageSpoken}</span>`
                 break;
                 case 9:
-                countryReceivedData[i].innerHTML += `<span class="Called__Country">${data[0].latlng.map((item, idx) => idx === 0 ? `latitude ${item}` : `longitude ${item}`)}<span>`
+                countryReceivedData[i].innerHTML += `<span class="Called__Country">${data[0].latlng.reduce((acc, item, idx) => idx === 0 ? acc + ' ' + `latitude ${item}` : acc + ' ' + `longitude ${item}`,'')}<span>`
                 break;
                 case 11:
                 countryReceivedData[i].innerHTML += `Population<span class="Called__Country">${data[0].population.toLocaleString("en-US")}</span>`
@@ -186,7 +198,7 @@ function updateData(data) {
                 countryReceivedData[i].innerHTML += `Start Of The Week<span class="Called__Country">${data[0].startOfWeek}</span>`
                 break;
                 case 16:
-                countryReceivedData[i].innerHTML += `Independent<span class="Called__Country">${data[0].independent}</span>`
+                countryReceivedData[i].innerHTML += `Independent<span class="Called__Country">${data[0].independent === true ? 'YES' : 'NO'}</span>`
                 break;
                 case 17:
                 countryReceivedData[i].innerHTML += `Car Side<span class="Called__Country">${data[0].car.side}</span>`
