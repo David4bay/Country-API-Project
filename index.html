@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css">
     <link rel="shortcut icon" href="/icon/favicon.ico" type="image/x-icon">
     <title>Country Lookup | Davidbay Project</title>
 </head>
 <body>
     <!--Main element holds all content-->
-    <main>
+    <main role="main">
         <!--Header holds our navigation bar-->
-        <header class="Header">
-            <nav class="Nav">
-                <ul class="List__Container">
+        <header class="Header" role="banner">
+            <nav class="Nav" role="navigation">
+                <ul class="List__Container" role="menubar">
                     <!--List items on navigation bar-->
-                    <li class="List__Item">
+                    <li class="List__Item" role="menubar">
                         Home
                     </li>
-                    <li class="List__Item">
+                    <li class="List__Item" role="menubar">
                         Project Info
                     </li>
-                    <li class="List__Item">
+                    <li class="List__Item" role="menubar">
                         Countries List
                     </li>
                     <a href="#userData" id="ipLookUp">
-                    <li class="List__Item">
+                    <li class="List__Item" role="menubar">
                         Find Me
                     </li>
                 </a>
@@ -34,11 +34,11 @@
             </nav>
         </header>
         <!--fetches user general info, if absent displays nothing-->
-        <section class="User__Info" id="userInfo">
+        <section class="User__Info" id="userInfo" role="region" aria-labelledby="infoHeading">
             <!--Section for user country request-->
-            <article class="Search__Wrapper">
-                <form class="Search__Form" id="countryForm">
-                    <fieldset class="Search__Container">
+            <article class="Search__Wrapper" role="article">
+                <form class="Search__Form" id="countryForm" role="search">
+                    <fieldset class="Search__Container" role="">
                         <label for="country" class="Search__Heading">Find Country</label>
                         <input type="search" class="Search__Field" name="search" id="searchField" />
                         <button type="button" class="Btn">Search</button>
@@ -46,42 +46,40 @@
                 </form>
             </article>
             <h1 class="Info__Heading" id="infoHeading">Your information</h1>
-            <ul class="DataType__Container" id="userData">
-                    <li class="Data__Item" id="ipAddress">IP Address </li>
-                    <li class="Data__Item" id="networkIP">Network IP </li>
-                    <li class="Data__Item" id="cityName">City </li>
-                    <li class="Data__Item" id="region">Region </li>
-                    <li class="Data__Item" id="countryName">Country Name </li>
-                    <li class="Data__Item" id="countryCapital">Country Capital </li>
-                    <li class="Data__Item" id="countryLatitude">Latitude </li>
-                    <li class="Data__Item" id="countryLongitude">Longitude </li>
-                    <li class="Data__Item" id="timezone">Timezone </li>
-                    <li class="Data__Item" id="utcOffset">UTC Offset </li>
-                    <li class="Data__Item" id="countryCallingCode">Country Calling Code </li>
-                    <li class="Data__Item" id="currencySymbol">Currency </li>
-                    <li class="Data__Item" id="currencyName">Currency Name </li>
-                    <li class="Data__Item" id="languages">Languages </li>
-                    <li class="Data__Item" id="countryArea">Country Area </li>
-                    <li class="Data__Item" id="countryPopulation">Country Population </li>
-                    <li class="Data__Item" id="networkOrganization">Network Organization </li>
+            <ul class="DataType__Container" id="userData" role="list">
+                    <li class="Data__Item" role="listitem" id="ipAddress">IP Address </li>
+                    <li class="Data__Item" role="listitem" id="networkIP">Network IP </li>
+                    <li class="Data__Item" role="listitem" id="cityName">City </li>
+                    <li class="Data__Item" role="listitem" id="region">Region </li>
+                    <li class="Data__Item" role="listitem" id="countryName">Country Name </li>
+                    <li class="Data__Item" role="listitem" id="countryCapital">Country Capital </li>
+                    <li class="Data__Item" role="listitem" id="countryLatitude">Latitude </li>
+                    <li class="Data__Item" role="listitem" id="countryLongitude">Longitude </li>
+                    <li class="Data__Item" role="listitem" id="timezone">Timezone </li>
+                    <li class="Data__Item" role="listitem" id="utcOffset">UTC Offset </li>
+                    <li class="Data__Item" role="listitem" id="countryCallingCode">Country Calling Code </li>
+                    <li class="Data__Item" role="listitem" id="currencySymbol">Currency </li>
+                    <li class="Data__Item" role="listitem" id="currencyName">Currency Name </li>
+                    <li class="Data__Item" role="listitem" id="languages">Languages </li>
+                    <li class="Data__Item" role="listitem" id="countryArea">Country Area </li>
+                    <li class="Data__Item" role="listitem" id="countryPopulation">Country Population </li>
+                    <li class="Data__Item" role="listitem" id="networkOrganization">Network Organization </li>
                 </ul>
             <!--Random City is loaded on page load-->
-            <article class="Random__City" id="randomCityInfo">
+            <article class="Random__City" id="randomCityInfo" role="region">
                 <h2 class="CountryOfficial__Name" id="officialCountryName"></h2>
                 <h3 class="CountryCommon__Name" id="commonCountryName"></h3>
                 <figure class="Country__Flag" id="countryFlagContainer">
-                    <img src="#" alt="" class="CountryFlag__Image" id="countryImage">
+                    <img src="#" alt="" class="CountryFlag__Image" id="countryImage" role="img" aria-labelledby="countryImageAltText">
                     <figcaption class="CountryImage__Text" id="countryImageAltText"></figcaption>
                 </figure>
                 <strong class="Currency__Name" id="currencyName">
-
                 </strong>
                 <strong class="Currency__Symbol" id="currencySymbol">
-
                 </strong>
-                <ul class="CountryLocation__Container" id="countryLocation">
-                <li class="Location" id="location"></li>
-                <li class="LatLong" id="location"></li>
+                <ul class="CountryLocation__Container" id="countryLocation" role="list">
+                <li class="Location" id="location" role="listitem"></li>
+                <li class="LatLong" id="location" role="listitem"></li>
                 </ul>
                 <p class="Region" id="region"></p>
                 <p class="Timezone" id="timezone"></p>

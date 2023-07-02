@@ -199,7 +199,7 @@ function updateData(data) {
                 break;
                 case 20:
                 countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> </span>`
-                break;
+                break;  
                 default:
                 break;
             }
