@@ -29,7 +29,6 @@ async function fetchData() {
     try {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
-        console.log(data);
         await renderUserData(data);
     } catch (error) {
         console.error('Error:', error);
@@ -109,6 +108,7 @@ function renderUserData(user) {
 
 // render list items from searched country
 function renderCountry(data) {
+    console.log(data)
     if (data !== null || data !== undefined) {
         const div = document.createElement('div');
         const body = document.body;
@@ -154,55 +154,55 @@ function updateData(data) {
         for (let i = 0; i < countryReceivedData.length; i++) {
             switch(i) {
                 case 0:
-                countryReceivedData[i].innerHTML += `Official Name<span class="Called__Country"> ${data[0].name.official}</span>`;
+                countryReceivedData[i].innerHTML += data[0].name.official ? `Official Name<span class="Called__Country"> ${data[0].name.official}</span>` : '';
                 break;
                 case 1:
-                countryReceivedData[i].innerHTML += `Flag <img class="Called__Country Flag" src=${data[0].flags.png} width="200" />`;
+                countryReceivedData[i].innerHTML += data[0].flags.png ? `Flag <img class="Called__Country Flag" src=${data[0].flags.png} width="200" />` : '';
                 break;
                 case 2:
-                countryReceivedData[i].innerHTML += `Coat Of Arms<img class="Called__Country CoatOfArms" src=${data[0].coatOfArms.png} width="200" />`;
+                countryReceivedData[i].innerHTML += data[0].coatOfArms.png ? `Coat Of Arms<img class="Called__Country CoatOfArms" src=${data[0].coatOfArms.png} width="200" />` : '';
                 break;
                 case 3:
-                countryReceivedData[i].innerHTML += `Common Name<span class="Called__Country">${data[0].name.common}</span>`;
+                countryReceivedData[i].innerHTML += data[0].name.common ? `Common Name<span class="Called__Country">${data[0].name.common}</span>` : '';
                 break;
                 case 4:
-                countryReceivedData[i].innerHTML += `Border<span class="Called__Country">${data[0].borders.map((item) => item)}</span>`;
+                countryReceivedData[i].innerHTML += data[0].borders ? `Border<span class="Called__Country">${data[0].borders.map((item) => item)}</span>` : '';
                 break;                    
                 case 5:
-                countryReceivedData[i].innerHTML += `Capital<span class="Called__Country">${data[0].capital}</span>`;
+                countryReceivedData[i].innerHTML += data[0].capital ? `Capital<span class="Called__Country">${data[0].capital}</span>` : '';
                 break;
                 case 6:
-                countryReceivedData[i].innerHTML += `Currency Name<span class="Called__Country">${currencyName}</span><span class="Called__Country Space">Currency Symbol<br/>${currencySymbol}</span>`;
+                countryReceivedData[i].innerHTML += currencySymbol ? `Currency Name<span class="Called__Country">${currencyName}</span><span class="Called__Country Space">Currency Symbol<br/>${currencySymbol}</span>` : '';
                 break;
                 case 7:
-                countryReceivedData[i].innerHTML += `Area<span class="Called__Country"> ${data[0].area.toLocaleString('en-US').toString()}</span>`;
+                countryReceivedData[i].innerHTML += data[0].area ? `Area<span class="Called__Country"> ${data[0].area.toLocaleString('en-US').toString()}</span>` : '';
                 break;
                 case 8:
-                countryReceivedData[i].innerHTML += `Languages<span class="Called__Country">${languageSpoken}</span>`
+                countryReceivedData[i].innerHTML += languageSpoken ? `Languages<span class="Called__Country">${languageSpoken}</span>` : '';
                 break;
                 case 9:
-                countryReceivedData[i].innerHTML += `<span class="Called__Country">${data[0].latlng.reduce((acc, item, idx) => idx === 0 ? acc + ' ' + `latitude ${item}` : acc + ' ' + `longitude ${item}`,'')}<span>`
+                countryReceivedData[i].innerHTML += data[0].latlng ? `<span class="Called__Country">${data[0].latlng.reduce((acc, item, idx) => idx === 0 ? acc + ' ' + `latitude ${item}` : acc + ' ' + `longitude ${item}`,'')}<span>` : '';
                 break;
                 case 11:
-                countryReceivedData[i].innerHTML += `Population<span class="Called__Country">${data[0].population.toLocaleString("en-US")}</span>`
+                countryReceivedData[i].innerHTML += data[0].population ? `Population<span class="Called__Country">${data[0].population.toLocaleString("en-US")}</span>` : '';
                 break;
                 case 12:
-                countryReceivedData[i].innerHTML += `Time Zone(s)<span class="Called__Country">${data[0].timezones.reduce((acc, item) => acc + ' ' + item, '')}</span>`
+                countryReceivedData[i].innerHTML += data[0].timezones ? `Time Zone(s)<span class="Called__Country">${data[0].timezones.reduce((acc, item) => acc + ' ' + item, '')}</span>` : '';
                 break;
                 case 13:
-                countryReceivedData[i].innerHTML += `Region<span class="Called__Country">${data[0].region}</span>`
+                countryReceivedData[i].innerHTML += data[0].region ? `Region<span class="Called__Country">${data[0].region}</span>` : '';
                 break;
                 case 14:
-                countryReceivedData[i].innerHTML += `Sub-Region<span class="Called__Country">${data[0].subregion}</span>`
+                countryReceivedData[i].innerHTML += data[0].subregion ? `Sub-Region<span class="Called__Country">${data[0].subregion}</span>` : '';
                 break;
                 case 15:
-                countryReceivedData[i].innerHTML += `Start Of The Week<span class="Called__Country">${data[0].startOfWeek}</span>`
+                countryReceivedData[i].innerHTML += data[0].startOfWeek ? `Start Of The Week<span class="Called__Country">${data[0].startOfWeek}</span>` : '';
                 break;
                 case 16:
-                countryReceivedData[i].innerHTML += `Independent<span class="Called__Country">${data[0].independent === true ? 'YES' : 'NO'}</span>`
+                countryReceivedData[i].innerHTML += data[0].independent ? `Independent<span class="Called__Country">${data[0].independent === true ? 'YES' : 'NO'}</span>` : '';
                 break;
                 case 17:
-                countryReceivedData[i].innerHTML += `Car Side<span class="Called__Country">${data[0].car.side}</span>`
+                countryReceivedData[i].innerHTML += data[0].car.side ? `Car Side<span class="Called__Country">${data[0].car.side}</span>` : ''
                 break;  
                 default:
                 break;
