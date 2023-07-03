@@ -166,7 +166,7 @@ function updateData(data) {
                 countryReceivedData[i].innerHTML += data[0].name.common ? `Common Name<span class="Called__Country">${data[0].name.common}</span>` : '';
                 break;
                 case 4:
-                countryReceivedData[i].innerHTML += data[0].borders ? `Border<span class="Called__Country">${data[0].borders.map((item) => item)}</span>` : '';
+                countryReceivedData[i].innerHTML += data[0].borders ? `Border<span class="Called__Country">${data[0].borders.reduce((acc, item) => acc + ' ' + item, '')}</span>` : '';
                 break;                    
                 case 5:
                 countryReceivedData[i].innerHTML += data[0].capital ? `Capital<span class="Called__Country">${data[0].capital}</span>` : '';
