@@ -8,6 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 // general body styles
@@ -226,7 +227,7 @@ a {
     letter-spacing: 2px;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    min-height: fit-content;
     background-color: hsla(0, 0%, 100%, 0.9);
     backdrop-filter: blur(5px);
     position: absolute;
@@ -236,7 +237,6 @@ a {
     width: 65vw;
     padding: 50px;
     gap: 30px;
-    overflow: scroll;
 }
 
 .Country__Data {
@@ -249,6 +249,11 @@ a {
     font-size: clamp(17px, 1vh, 20px);
     font-weight: 700;
     list-style: none;
+}
+
+.Called__Country {
+    display: flex;
+    flex-direction: column;
 }
 
 .Called__Country:hover {
@@ -488,7 +493,7 @@ a {
         letter-spacing: 2px;
         flex-direction: column;
         align-items: center;
-        min-height: 100vh;
+        min-height: fit-content;
         background-color: hsla(0, 0%, 100%, 0.9);
         backdrop-filter: blur(5px);
         position: absolute;
@@ -510,6 +515,11 @@ a {
         font-size: clamp(17px, 1vh, 20px);
         font-weight: 700;
         list-style: none;
+    }
+
+    .Called__Country {
+        display: flex;
+        flex-direction: column;
     }
 
     .Called__Country:hover {
