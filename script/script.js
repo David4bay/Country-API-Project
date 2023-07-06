@@ -1,13 +1,13 @@
 // Toggle user info variable
-let toggleUserIp = false;
+
 
 // Waits for content to load
 document.addEventListener('DOMContentLoaded', fetchData);
 
 // Listens for a submit event
 document.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await loadCountry();
+    e.preventDefault();
+    loadCountry();
 })
 
 // Waits for a click event then performs actions
@@ -29,7 +29,7 @@ async function fetchData() {
     try {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
-        await renderUserData(data);
+        renderUserData(data);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -38,19 +38,21 @@ async function fetchData() {
 // https://ipapi.co/json
 async function loadCountry() {
     const searchFieldCountry = document.getElementById('searchField').value;
+    const searchPopup = document.getElementById('countryDataContainer');
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`);
         const data = await response.json();
-        console.log(data);
-        await renderCountry(data);
+        if (searchPopup) {
+            searchPopup.remove();
+        }
+        renderCountry(data);
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
 // renders the users ip info
-function renderUserData(user) {
-    console.log(user)
+async function renderUserData(user) {
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -74,41 +76,45 @@ function renderUserData(user) {
 
     // find me button, scrolls to and loads up user info
     ipLookUp.addEventListener('click', () => {
+        // conditionally render user ip info
+        let timeout = setTimeout(clearInfo, 10000)
+            userData.style.display = 'flex';
+            ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
+            networkIP.innerHTML += ` <span class="Called__Data">${user.network}</span>`;
+            cityName.innerHTML += ` <span class="Called__Data">${user.city}</span>`;
+            region.innerHTML += ` <span class="Called__Data">${user.region}</span>`;
+            countryName.innerHTML += ` <span class="Called__Data">${user['country_name']}</span>`;
+            countryCapital.innerHTML += ` <span class="Called__Data">${user['country_capital']}</span>`;
+            countryLatitude.innerHTML += ` <span class="Called__Data">${user.latitude.toString()}</span>`;
+            countryLongitude.innerHTML += ` <span class="Called__Data">${user.longitude.toString()}</span>`;
+            timezone.innerHTML += ` <span class="Called__Data">${user.timezone}</span>`;
+            utcOffset.innerHTML += ` <span class="Called__Data">${user['utc_offset']}</span>`;
+            countryCallingCode.innerHTML += ` <span class="Called__Data">${user['country_calling_code']}</span>`;
+            currencySymbol.innerHTML += ` <span class="Called__Data">${user.currency}</span>`;
+            currencyName.innerHTML += ` <span class="Called__Data">${user['currency_name']}</span>`;
+            languages.innerHTML += ` <span class="Called__Data">${String(user.languages).replaceAll(',', ' | ')}</span>`;
+            countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
+            countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
+            networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
         if (!user) {
             loadCountry();
         }
     });
-    // if user data isn't present hide section with user ip info
-    if (!user) {
-        userData.style.display = 'none';
-        infoHeading.style.display = 'none';
-    } else {
 
-        // conditionally render user ip info
-        userData.style.display = 'flex';
-        ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
-        networkIP.innerHTML += ` <span class="Called__Data">${user.network}</span>`;
-        cityName.innerHTML += ` <span class="Called__Data">${user.city}</span>`;
-        region.innerHTML += ` <span class="Called__Data">${user.region}</span>`;
-        countryName.innerHTML += ` <span class="Called__Data">${user['country_name']}</span>`;
-        countryCapital.innerHTML += ` <span class="Called__Data">${user['country_capital']}</span>`;
-        countryLatitude.innerHTML += ` <span class="Called__Data">${user.latitude.toString()}</span>`;
-        countryLongitude.innerHTML += ` <span class="Called__Data">${user.longitude.toString()}</span>`;
-        timezone.innerHTML += ` <span class="Called__Data">${user.timezone}</span>`;
-        utcOffset.innerHTML += ` <span class="Called__Data">${user['utc_offset']}</span>`;
-        countryCallingCode.innerHTML += ` <span class="Called__Data">${user['country_calling_code']}</span>`;
-        currencySymbol.innerHTML += ` <span class="Called__Data">${user.currency}</span>`;
-        currencyName.innerHTML += ` <span class="Called__Data">${user['currency_name']}</span>`;
-        languages.innerHTML += ` <span class="Called__Data">${String(user.languages).replaceAll(',', ' | ')}</span>`;
-        countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
-        countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
-        networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
-    }
 }
+
+function clearInfo() {
+userData.style.display = 'none';
+infoHeading.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    userData.style.display = 'none';
+    infoHeading.style.display = 'none';
+})
 
 // render list items from searched country
 function renderCountry(data) {
-    console.log(data)
     if (data !== null || data !== undefined) {
         const div = document.createElement('div');
         const body = document.body;
