@@ -1,19 +1,11 @@
-// Toggle user info variable
-
-
 // Waits for content to load
-document.addEventListener('DOMContentLoaded', fetchData);
-
-// Listens for a submit event
-document.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    loadCountry();
-})
+document.addEventListener('DOMContentLoaded', hideData);
 
 // Waits for a click event then performs actions
-document.addEventListener('click', async (e) => {
+document.addEventListener('click', (e) => {
+    const ipLookUp = document.getElementById('ipLookUp');
     if (e.target.type === 'button') {
-        await loadCountry();
+        loadCountry();
     }
     if (e.target.type === undefined || e.target.type === null) {
         const body = document.body;
@@ -22,10 +14,27 @@ document.addEventListener('click', async (e) => {
             body.removeChild(modal);
         }
     }
-    })
+    if (e.target.id === 'findMe') {
+        fetchData();
+    }
+})
+
+function hideData() {
+    const userData = document.getElementById('userData');
+    userData.style.display = 'none';
+    infoHeading.style.display = 'none';
+}
+
+// Listens for a submit event
+document.addEventListener('submit', (e) => {
+    e.preventDefault();
+    loadCountry();
+})
+
 
 // test the country.json first
 async function fetchData() {
+    const userData = document.getElementById('userData');
     try {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
@@ -35,24 +44,9 @@ async function fetchData() {
     }
 }
 
-// https://ipapi.co/json
-async function loadCountry() {
-    const searchFieldCountry = document.getElementById('searchField').value;
-    const searchPopup = document.getElementById('countryDataContainer');
-    try {
-        const response = await fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`);
-        const data = await response.json();
-        if (searchPopup) {
-            searchPopup.remove();
-        }
-        renderCountry(data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
 // renders the users ip info
 async function renderUserData(user) {
+    const calledData = document.getElementsByClassName('Called__Data');
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -73,12 +67,15 @@ async function renderUserData(user) {
     const networkOrganization = document.getElementById('networkOrganization');
     const infoHeading = document.getElementById('infoHeading');
     const ipLookUp = document.getElementById('ipLookUp');
-
-    // find me button, scrolls to and loads up user info
-    ipLookUp.addEventListener('click', () => {
-        // conditionally render user ip info
+    
+    if (calledData) {
+        for (let i = 0; i < calledData.length; i++) {
+            calledData[i].remove();
+        }
+    }
         let timeout = setTimeout(clearInfo, 10000)
             userData.style.display = 'flex';
+            infoHeading.style.display = 'block';
             ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
             networkIP.innerHTML += ` <span class="Called__Data">${user.network}</span>`;
             cityName.innerHTML += ` <span class="Called__Data">${user.city}</span>`;
@@ -96,22 +93,36 @@ async function renderUserData(user) {
             countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
             countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
             networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
-        if (!user) {
-            loadCountry();
-        }
-    });
-
 }
 
 function clearInfo() {
-userData.style.display = 'none';
-infoHeading.style.display = 'none';
+    const calledData = document.getElementsByClassName('Called__Data');
+    const userData = document.getElementById('userData');
+    const infoHeading = document.getElementById('infoHeading');
+    if (userData.style.display === 'flex') {
+        infoHeading.style.display = 'none';
+        userData.style.display = 'none';
+        for (let i = 0; i < calledData.length; i++) {
+            calledData[i].remove();
+        }
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    userData.style.display = 'none';
-    infoHeading.style.display = 'none';
-})
+// https://ipapi.co/json
+async function loadCountry() {
+    const searchFieldCountry = document.getElementById('searchField').value;
+    const searchPopup = document.getElementById('countryDataContainer');
+    try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`);
+        const data = await response.json();
+        if (searchPopup) {
+            searchPopup.remove();
+        }
+        renderCountry(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 
 // render list items from searched country
 function renderCountry(data) {
@@ -127,7 +138,6 @@ function renderCountry(data) {
             div.appendChild(li);
         }
     }
-
     // makes call to update list items with data
     updateData(data);
 }
@@ -140,15 +150,15 @@ function updateData(data) {
     // checking if data exists before extracting data from the api
     if (countryReceivedData) {
         const currency = data[0]?.currencies;
-        const languageInfo = data[0].languages;
+        const languageInfo = data[0]?.languages;
         let currencyName;
         let currencySymbol;
         let languageSpoken;
 
         // getting the dynamic properties of currencies
         for (const key in currency) {
-            currencyName = currency[key].name;
-            currencySymbol = currency[key].symbol;
+            currencyName = currency[key]?.name;
+            currencySymbol = currency[key]?.symbol;
         }
 
         // accessing the dynamic language key

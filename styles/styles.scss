@@ -42,27 +42,39 @@ main {
 .List__Container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 25px 0px;
+    justify-content: center;
+    gap: calc(3vw);
+    padding: 30px 5px;
     width: 100%;
+    background-color: hsla(48, 100%, 83%, 0.7);
+    backdrop-filter: blur(5px);
 }
 
 // Nav list items
 .List__Item {
     text-transform: uppercase;
-    font-size: 15px;
-    color: black;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
     list-style: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-bottom: 4px solid #eaf;
     padding: 5px 0;
-    border-bottom: 2px solid #000;
     transition: all 0.3s ease;
+}
+
+.List__Item:first-child {
+    padding-left: 8px;
 }
 
 // Nav list items on click (mobile)
 .List__Item:active {
-    transform: translateY(-4px);
+    transform: translateY(4px);
+    border-bottom-width: 2px;
 }
 
 // User info at
@@ -192,13 +204,17 @@ main {
     color: #fff;
 }
 
+.Search__Field:focus::placeholder {
+    color: #fff;
+}
+
 // Search button 
 .Btn {
     display: block;
     width: 25vw;
     padding: 12px;
     background: none;
-    font-size: clamp(19px, 1vw, 20px);
+    font-size: clamp(17px, 1vw, 20px);
     letter-spacing: 2px;
     transition: all 0.4s ease;
 }
