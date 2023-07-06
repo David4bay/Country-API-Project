@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', hideData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
+    e.stopPropagation();
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
@@ -36,7 +37,9 @@ async function fetchData() {
     try {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
-        renderUserData(data);
+        if (userData.style.display === 'none') {
+            renderUserData(data);
+        }
     } catch (error) {
         console.error('Error:', error);
     }
