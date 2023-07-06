@@ -4,15 +4,13 @@ document.addEventListener('DOMContentLoaded', hideData);
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
     const ipLookUp = document.getElementById('ipLookUp');
+    const body = document.body;
+    const modal = document.getElementById('countryDataContainer');
+    if (modal) {
+        body.removeChild(modal);
+    }
     if (e.target.type === 'button') {
         loadCountry();
-    }
-    if (e.target.type === undefined || e.target.type === null) {
-        const body = document.body;
-        const modal = document.getElementById('countryDataContainer');
-        if (modal) {
-            body.removeChild(modal);
-        }
     }
     if (e.target.id === 'findMe') {
         fetchData();
