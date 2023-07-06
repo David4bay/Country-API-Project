@@ -465,6 +465,10 @@ a {
         color: #fff;
     }
 
+    .Search__Field:focus::placeholder {
+        color: #fff;
+    }
+
     // Search button
     .Btn {
         display: block;
