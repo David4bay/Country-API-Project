@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', hideData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopImmediatePropagation();
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
@@ -26,7 +26,14 @@ function hideData() {
 
 // Listens for a submit event
 document.addEventListener('submit', (e) => {
+    e.stopImmediatePropagation();
     e.preventDefault();
+    
+    const body = document.body;
+    const modal = document.getElementById('countryDataContainer');
+    if (modal) {
+        body.removeChild(modal);
+    }
     loadCountry();
 })
 
@@ -96,30 +103,19 @@ async function renderUserData(user) {
             networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
 }
 
-function clearInfo() {
-    const calledData = document.getElementsByClassName('Called__Data');
-    const userData = document.getElementById('userData');
-    const infoHeading = document.getElementById('infoHeading');
-    if (userData.style.display === 'flex') {
-        infoHeading.style.display = 'none';
-        userData.style.display = 'none';
-        for (let i = 0; i < calledData.length; i++) {
-            calledData[i].remove();
-        }
-    }
-}
-
 // https://ipapi.co/json
 async function loadCountry() {
     const searchFieldCountry = document.getElementById('searchField').value;
     const searchPopup = document.getElementById('countryDataContainer');
+    if (searchPopup) {
+        searchPopup.remove();
+    }
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${searchFieldCountry}/`);
         const data = await response.json();
-        if (searchPopup) {
-            searchPopup.remove();
+        if (data?.status !== 404 && data.length > 0) {
+            renderCountry(data);
         }
-        renderCountry(data);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -145,11 +141,9 @@ function renderCountry(data) {
 
 // update list items with data for country searched
 function updateData(data) {
-
     const countryReceivedData = document.getElementsByClassName('Country__Data');
-
     // checking if data exists before extracting data from the api
-    if (countryReceivedData) {
+    if (data) {
         const currency = data[0]?.currencies;
         const languageInfo = data[0]?.languages;
         let currencyName;
