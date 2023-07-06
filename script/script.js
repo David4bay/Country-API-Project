@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', hideData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
-    e.stopImmediatePropagation();
+
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
@@ -101,6 +101,19 @@ async function renderUserData(user) {
             countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
             countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
             networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
+}
+
+function clearInfo() {
+    const calledData = document.getElementsByClassName('Called__Data');
+    const userData = document.getElementById('userData');
+    const infoHeading = document.getElementById('infoHeading');
+    if (userData.style.display === 'flex') {
+        infoHeading.style.display = 'none';
+        userData.style.display = 'none';
+        for (let i = 0; i < calledData.length; i++) {
+            calledData[i].remove();
+        }
+    }
 }
 
 // https://ipapi.co/json
