@@ -280,7 +280,6 @@ body {
     row-gap: 20px;
     background-color: #fff;
     padding: 25px 0;
-    min-height: 100vh;
   }
   .Individual__Country {
     display: grid;

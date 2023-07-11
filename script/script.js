@@ -7,6 +7,7 @@ document.addEventListener('click', (e) => {
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
+    const countriesList = document.getElementById('listedCountries');
     if (modal) {
         body.removeChild(modal);
     }
@@ -18,6 +19,12 @@ document.addEventListener('click', (e) => {
     }
     if (e.target.id === 'countriesList') {
         loadCountriesList();
+    }
+    if (e.target.id === 'listedCountries') {
+        e.target.remove();
+    }
+    if (countriesList) {
+        countriesList.remove()
     }
 })
 
@@ -32,6 +39,7 @@ function renderListOfCountries(data) {
     const div = document.createElement('div');
     div.setAttribute('id', 'listedCountries');
     div.setAttribute('class', 'Listed__Countries');
+    body.style.position = 'relative';
     if (modal) {
         body.removeChild(modal);
     }
