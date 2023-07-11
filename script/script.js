@@ -16,7 +16,36 @@ document.addEventListener('click', (e) => {
     if (e.target.id === 'findMe') {
         fetchData();
     }
+    if (e.target.id === 'countriesList') {
+        loadCountriesList();
+    }
 })
+
+function loadCountriesList() {
+    fetch('https://restcountries.com/v3.1/all').then(response => response.json())
+    .then(data => renderListOfCountries(data))
+}
+
+function renderListOfCountries(data) {
+    const body = document.body;
+    const modal = document.getElementById('countryDataContainer');
+    const div = document.createElement('div');
+    div.setAttribute('id', 'listedCountries');
+    div.setAttribute('class', 'Listed__Countries');
+    if (modal) {
+        body.removeChild(modal);
+    }
+    
+    for (let i = 0; i < data.length; i++) {
+        const li = document.createElement('li');
+        li.setAttribute('class', 'Individual__Country');
+        li.setAttribute('id', 'individualCountry');
+        li.innerText = `${data[i].name.common}`;
+        li.title = `${data[i].name.official}`;
+        div.appendChild(li);
+    }
+    body.appendChild(div);
+}
 
 function hideData() {
     const userData = document.getElementById('userData');
