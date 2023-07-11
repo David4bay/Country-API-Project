@@ -34,6 +34,7 @@ function loadCountriesList() {
 }
 
 function renderListOfCountries(data) {
+    console.log(data);
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const div = document.createElement('div');
@@ -46,8 +47,13 @@ function renderListOfCountries(data) {
     
     for (let i = 0; i < data.length; i++) {
         const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.setAttribute('class', 'ListedCountry__Image');
+        img.src = `${data[i].flags.png}`;
+        img.alt = `${data[i].flags.alt}`;
         li.setAttribute('class', 'Individual__Country');
         li.setAttribute('id', 'individualCountry');
+        li.innerHTML += img
         li.innerText = `${data[i].name.common}`;
         li.title = `${data[i].name.official}`;
         div.appendChild(li);

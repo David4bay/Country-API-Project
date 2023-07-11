@@ -266,7 +266,6 @@ body {
   }
   .Listed__Countries {
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: repeat(auto, minmax(1vw, -webkit-fit-content));
     grid-template-rows: repeat(auto, minmax(1vw, fit-content));
     position: absolute;
@@ -274,18 +273,28 @@ body {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    min-height: -webkit-max-content;
+    min-height: -moz-max-content;
+    min-height: max-content;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     row-gap: 20px;
     background-color: #fff;
     padding: 25px 0;
+    scroll-behavior: smooth;
+  }
+  .ListedCountry__Image {
+    display: inline;
+    margin-right: 4px;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   .Individual__Country {
     display: grid;
     font-weight: 700;
     font-size: clamp(1vw, 18px, 20px);
-    background-color: light;
+    padding: 0 8px;
     cursor: pointer;
   }
   .List__Container {
