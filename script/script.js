@@ -8,7 +8,7 @@ document.addEventListener('click', (e) => {
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const countriesList = document.getElementById('listedCountries');
-    
+
     if (e.target.type === 'button') {
         loadCountry();
     }
@@ -23,10 +23,16 @@ document.addEventListener('click', (e) => {
         case 'listedCountries':
         e.target.remove();
         break;
+        case 'individualCountry':
+        loadCountry();
+        break;
         default:
         break;
     }
 
+    /*If modal is present already, remove,
+    if countriesList is present already, remove or
+    do nothing */
     modal ? body.removeChild(modal) :
     countriesList ? countriesList.remove() :
     null
@@ -40,7 +46,7 @@ function loadCountriesList() {
 }
 
 function renderListOfCountries(data) {
-    
+
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const div = document.createElement('div');
@@ -53,13 +59,8 @@ function renderListOfCountries(data) {
     
     for (let i = 0; i < data.length; i++) {
         const li = document.createElement('li');
-        const img = document.createElement('img');
-        img.setAttribute('class', 'ListedCountry__Image');
-        img.src = `${data[i].flags.png}`;
-        img.alt = `${data[i].flags.alt}`;
         li.setAttribute('class', 'Individual__Country');
         li.setAttribute('id', 'individualCountry');
-        li.innerHTML += img
         li.innerText = `${data[i].name.common}`;
         li.title = `${data[i].name.official}`;
         div.appendChild(li);
@@ -167,7 +168,13 @@ function clearInfo() {
 
 // https://ipapi.co/json
 async function loadCountry() {
-    const searchFieldCountry = document.getElementById('searchField').value;
+    let searchFieldCountry = document.getElementById('searchField').value;
+    const individualCountry = document.getElementById('individualCountry');
+    let country = individualCountry.innerText;
+
+    if (country) {
+        searchFieldCountry = country;
+    }
     const searchPopup = document.getElementById('countryDataContainer');
     if (searchPopup) {
         searchPopup.remove();
