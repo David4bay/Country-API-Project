@@ -348,6 +348,7 @@ a {
         min-height: max-content;
         margin-left: auto;
         margin-right: auto;
+        width: 50vw;
         text-align: center;
         row-gap: 20px;
         background-color: #fff;
@@ -364,8 +365,9 @@ a {
     .Individual__Country {
         display: grid;
         font-weight: 700;
+        font-style: Verdana, Tahoma, sans-serif;
         font-size: clamp(1vw, 18px, 20px);
-        padding: 0 8px;
+        padding: 5px 8px;
         cursor: pointer;
     }
     
