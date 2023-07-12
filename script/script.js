@@ -12,7 +12,7 @@ document.addEventListener('click', (e) => {
     if (e.target.type === 'button') {
         loadCountry();
     }
-    
+
     switch(e.target.id) {
         case 'button':
         loadCountry();
@@ -40,7 +40,7 @@ function loadCountriesList() {
 }
 
 function renderListOfCountries(data) {
-    console.log(data);
+    
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const div = document.createElement('div');
@@ -230,7 +230,7 @@ function updateData(data) {
                 countryReceivedData[i].innerHTML += data[0].name.official ? `Official Name<span class="Called__Country"> ${data[0].name.official}</span>` : '';
                 break;
                 case 1:
-                countryReceivedData[i].innerHTML += data[0].flags.png ? `Flag <img class="Called__Country Flag" src=${data[0].flags.png} width="200" />` : '';
+                countryReceivedData[i].innerHTML += data[0].flags.png ? `Flag <img class="Called__Country Flag" src=${data[0].flags.png} alt=${data[0].flags.alt} width="200" />` : '';
                 break;
                 case 2:
                 countryReceivedData[i].innerHTML += data[0].coatOfArms.png ? `Coat Of Arms<img class="Called__Country CoatOfArms" src=${data[0].coatOfArms.png} width="200" />` : '';
