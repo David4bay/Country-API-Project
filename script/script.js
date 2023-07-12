@@ -10,12 +10,12 @@ document.addEventListener('click', (e) => {
     const countriesList = document.getElementById('listedCountries');
 
     if (e.target.type === 'button') {
-        loadCountry();
+        loadCountry(e);
     }
 
     switch(e.target.id) {
         case 'button':
-        loadCountry();
+        loadCountry(e);
         break;
         case 'countriesList':
         loadCountriesList();
@@ -24,7 +24,7 @@ document.addEventListener('click', (e) => {
         e.target.remove();
         break;
         case 'individualCountry':
-        loadCountry();
+        loadCountry(e);
         break;
         default:
         break;
@@ -84,7 +84,7 @@ document.addEventListener('submit', (e) => {
     if (modal) {
         body.removeChild(modal);
     }
-    loadCountry();
+    loadCountry(e);
 })
 
 
@@ -167,15 +167,16 @@ function clearInfo() {
 }
 
 // https://ipapi.co/json
-async function loadCountry() {
-    let searchFieldCountry = document.getElementById('searchField').value;
-    const individualCountry = document.getElementById('individualCountry');
-    let country = individualCountry.innerText;
-
-    if (country) {
+async function loadCountry(e) {
+    let searchFieldCountry = document.getElementById('searchField').value;;
+    let country = e.target.id === 'individualCountry' ? e.target.innerText :
+     e.target.id === 'searchButton' ? searchFieldCountry : null;
+    if (country !== null && country !== undefined) {
         searchFieldCountry = country;
     }
+
     const searchPopup = document.getElementById('countryDataContainer');
+
     if (searchPopup) {
         searchPopup.remove();
     }
