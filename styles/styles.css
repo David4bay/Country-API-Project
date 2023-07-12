@@ -33,24 +33,27 @@ body {
   }
   .Listed__Countries {
     display: grid;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(auto, minmax(1vw, -webkit-fit-content));
     grid-template-rows: repeat(auto, minmax(1vw, fit-content));
     position: absolute;
     inset: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    min-height: -webkit-max-content;
-    min-height: -moz-max-content;
-    min-height: max-content;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    overflow-y: scroll;
+    width: 70%;
     row-gap: 20px;
-    background-color: #fff;
+    background: radial-gradient(circle at center, #eaf, #fea, rgba(255, 255, 255, 0.53));
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
     padding: 25px 0;
     scroll-behavior: smooth;
-    overflow-y: scroll;
   }
   .ListedCountry__Image {
     display: inline;
@@ -60,10 +63,21 @@ body {
   }
   .Individual__Country {
     display: grid;
+    justify-self: center;
     font-weight: 700;
+    width: 50%;
+    background-color: transparent;
+    font-style: Verdana, Tahoma, sans-serif;
     font-size: clamp(1vw, 18px, 20px);
-    padding: 0 8px;
+    padding: 20px;
+    box-shadow: -2px 2px 0px 4px #000;
     cursor: pointer;
+    transition: all 0.4s ease;
+    scroll-behavior: smooth;
+  }
+  .Individual__Country:hover {
+    background-color: #fff;
+    transform: scale(1.1);
   }
   .List__Container {
     display: flex;
@@ -338,6 +352,7 @@ body {
     box-shadow: -2px 2px 0px 4px #000;
     cursor: pointer;
     transition: all 0.1s ease;
+    scroll-behavior: smooth;
   }
   .Individual__Country:hover {
     background-color: #fff;
