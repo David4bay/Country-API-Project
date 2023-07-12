@@ -8,24 +8,30 @@ document.addEventListener('click', (e) => {
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const countriesList = document.getElementById('listedCountries');
-    if (modal) {
-        body.removeChild(modal);
-    }
+    
     if (e.target.type === 'button') {
         loadCountry();
     }
-    if (e.target.id === 'findMe') {
-        fetchData();
-    }
-    if (e.target.id === 'countriesList') {
+    
+    switch(e.target.id) {
+        case 'button':
+        loadCountry();
+        break;
+        case 'countriesList':
         loadCountriesList();
-    }
-    if (e.target.id === 'listedCountries') {
+        break;
+        case 'listedCountries':
         e.target.remove();
+        break;
+        default:
+        break;
     }
-    if (countriesList) {
-        countriesList.remove()
-    }
+
+    modal ? body.removeChild(modal) :
+    countriesList ? countriesList.remove() :
+    null
+
+
 })
 
 function loadCountriesList() {
