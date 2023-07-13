@@ -238,7 +238,7 @@ function updateData(data) {
                 countryReceivedData[i].innerHTML += data[0].name.official ? `Official Name<span class="Called__Country"> ${data[0].name.official}</span>` : '';
                 break;
                 case 1:
-                countryReceivedData[i].innerHTML += data[0].flags.png ? `Flag <img class="Called__Country Flag" src=${data[0].flags.png} alt=${data[0].flags.alt} width="200" />` : '';
+                countryReceivedData[i].innerHTML += data[0].flags.png ? `Flag <img class="Flag" src=${data[0].flags.png} alt=${data[0].flags.alt} />` : '';
                 break;
                 case 2:
                 countryReceivedData[i].innerHTML += data[0].coatOfArms.png ? `Coat Of Arms<img class="Called__Country CoatOfArms" src=${data[0].coatOfArms.png} width="200" />` : '';
