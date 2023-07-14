@@ -90,7 +90,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: calc(3vw);
+    gap: 10px;
     padding: 30px 5px;
     width: 100%;
     background-color: hsla(48, 100%, 83%, 0.7);
@@ -103,7 +103,7 @@ main {
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 2px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
     font-family: 'Times New Roman', Times, serif;
     color: #000;
@@ -113,10 +113,6 @@ main {
     border-bottom: 4px solid #eaf;
     padding: 5px 0;
     transition: all 0.3s ease;
-}
-
-.List__Item:first-child {
-    padding-left: 8px;
 }
 
 // Nav list items on click (mobile)
