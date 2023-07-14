@@ -90,7 +90,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     padding: 30px 5px;
     width: 100%;
     background-color: hsla(48, 100%, 83%, 0.7);
@@ -102,7 +102,6 @@ main {
 .List__Item {
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 2px;
     font-size: 15px;
     font-weight: 700;
     font-family: 'Times New Roman', Times, serif;
