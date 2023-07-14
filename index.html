@@ -16,20 +16,20 @@
             <nav class="Nav" role="navigation">
                 <ul class="List__Container" role="menubar">
                     <!--List items on navigation bar-->
+                    <a href="https://github.com/David4bay" target="_blank" rel="noopener__noreferrer">
                     <li class="List__Item" role="menubar">
-                        Home
+                        My GitHub 
                     </li>
+                    </a>
                     <li class="List__Item" role="menubar">
                         Project Info
                     </li>
                     <li class="List__Item" role="menubar" id="countriesList">
                         Countries List
                     </li>
-                    <a href="#userData" id="ipLookUp">
-                    <li class="List__Item" role="menubar" id="findMe">
-                        Find Me
+                    <li class="List__Item" role="menubar" id="findMe"id="ipLookUp">
+                        Lookup IP
                     </li>
-                </a>
                 </ul>
             </nav>
         </header>
@@ -40,15 +40,14 @@
                 <form class="Search__Form" id="countryForm" role="search">
                     <fieldset class="Search__Container" role="">
                         <label for="country" class="Search__Heading">Find Country</label>
-                        <input type="search" placeholder="Search for country..." class="Search__Field" name="search" id="searchField" />
+                        <input type="search" placeholder="Lookup Country..." class="Search__Field" name="search" id="searchField" />
                         <button type="button" class="Btn" id="searchButton">Search</button>
                     </fieldset>
                 </form>
             </article>
 
             <!--User Information heading-->
-            <h1 class="Info__Heading" id="infoHeading">Your information</h1>
-            <ul class="DataType__Container" id="userData" role="list">
+            <ul class="DataType__Container Own__IP" id="userData" role="list">
                     <li class="Data__Item" role="listitem" id="ipAddress">IP Address </li>
                     <li class="Data__Item" role="listitem" id="networkIP">Network IP </li>
                     <li class="Data__Item" role="listitem" id="cityName">City </li>

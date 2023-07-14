@@ -117,31 +117,15 @@ body {
     display: flex;
     flex-direction: column;
   }
-  .Info__Heading {
-    font-size: 17px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-    width: 90vw;
-    margin: auto;
-    padding: 12px 0;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.35);
-    transition: all 0.3s ease-out;
-  }
-  .Info__Heading:hover {
-    background-color: #000;
-    cursor: pointer;
-    color: #fff;
-  }
   .DataType__Container {
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 10px;
     width: 90vw;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
     margin-top: 20px;
     margin-bottom: 50px;
     margin-left: auto;
@@ -211,7 +195,7 @@ body {
     color: #000;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-bottom: 4px solid #fff;
-    transition: all 0.4s ease;
+    transition: all 0.4s ease-in-out;
   }
   .Search__Field:focus {
     background-color: hsla(0deg, 0%, 0%, 0.65);
@@ -231,7 +215,7 @@ body {
   .Btn {
     display: block;
     width: 25vw;
-    padding: 12px;
+    padding: 10px;
     background: transparent;
     font-size: clamp(17px, 1vw, 20px);
     letter-spacing: 2px;
@@ -299,6 +283,13 @@ body {
   }
   .Space {
     margin-top: 12px;
+  }
+  .Own__IP {
+    display: none;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    inset: 0;
   }
 }
 @media (min-width: 900px) {
@@ -410,28 +401,15 @@ body {
     flex-direction: column;
     padding-top: 40px;
   }
-  .Info__Heading {
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.25);
-    transition: all 0.3s ease-out;
-  }
-  .Info__Heading:hover {
-    background-color: #000;
-    cursor: pointer;
-    color: #fff;
-  }
   .DataType__Container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 50vw;
+    width: 80vw;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
     -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
     text-transform: uppercase;
@@ -530,7 +508,7 @@ body {
   .Btn {
     display: block;
     width: 25vw;
-    padding: 12px;
+    padding: 10px;
     background: none;
     font-size: clamp(19px, 1vw, 20px);
     letter-spacing: 2px;
@@ -591,5 +569,12 @@ body {
   }
   .Space {
     margin-top: 12px;
+  }
+  .Own__IP {
+    display: none;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    inset: 0;
   }
 }/*# sourceMappingURL=styles.css.map */

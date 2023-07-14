@@ -1,5 +1,5 @@
 // Waits for content to load
-document.addEventListener('DOMContentLoaded', hideData);
+document.addEventListener('DOMContentLoaded', fetchData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
@@ -8,6 +8,7 @@ document.addEventListener('click', (e) => {
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const countriesList = document.getElementById('listedCountries');
+    const userData = document.getElementById('userData');
 
     if (e.target.type === 'button') {
         loadCountry(e);
@@ -26,6 +27,9 @@ document.addEventListener('click', (e) => {
         case 'individualCountry':
         loadCountry(e);
         break;
+        case 'findMe':
+        hideData();
+        break;
         default:
         break;
     }
@@ -34,17 +38,19 @@ document.addEventListener('click', (e) => {
     if countriesList is present already, remove or
     do nothing */
     modal ? body.removeChild(modal) :
-    countriesList ? countriesList.remove() :
+    countriesList ? countriesList.remove() : 
+    e.target.id !== 'findMe' ? userData.style.display = 'none' :
     null
-
-
 })
 
+// Makes call to all countries endpoints to deliver all countries available in api
 function loadCountriesList() {
     fetch('https://restcountries.com/v3.1/all').then(response => response.json())
     .then(data => renderListOfCountries(data))
 }
 
+
+// Renders total list of countries available to search
 function renderListOfCountries(data) {
 
     const body = document.body;
@@ -68,10 +74,14 @@ function renderListOfCountries(data) {
     body.appendChild(div);
 }
 
+// hide the user ip information
 function hideData() {
     const userData = document.getElementById('userData');
-    userData.style.display = 'none';
-    infoHeading.style.display = 'none';
+    if (userData.style.display === 'none') {
+        userData.style.display = 'flex';
+    } else {
+        userData.style.display = 'none';
+    }
 }
 
 // Listens for a submit event
@@ -94,17 +104,28 @@ async function fetchData() {
     try {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
-        if (userData.style.display === 'none') {
-            renderUserData(data);
-        }
-    } catch (error) {
-        console.error('Error:', error);
+        renderUserData(data);
+    } catch () {
+        renderError()
+        // console.error('Error:', error);
     }
+}
+
+function renderError() {
+    const searchTitle = document.querySelector('.Search__Heading');
+    const errorInfo = document.createElement('div');
+    errorInfo.setAttribute('class', 'Error__Tip');
+    errorInfo.setAttribute('id', 'errorDisplay');
+    const errorId = document.getElementById('errorDisplay');
+        searchTitle.style.position = 'relative';
+        errorId.style.position = 'absolute';
+        errorId.style.top = '-100%';
+        errorId.innerText = 'Unfortunately, your search failed!';
+        searchTitle.apprend(errorId);
 }
 
 // renders the users ip info
 async function renderUserData(user) {
-    const calledData = document.getElementsByClassName('Called__Data');
     const userData = document.getElementById('userData');
     const ipAddress = document.getElementById('ipAddress');
     const networkIP = document.getElementById('networkIP');
@@ -123,17 +144,9 @@ async function renderUserData(user) {
     const countryArea = document.getElementById('countryArea');
     const countryPopulation = document.getElementById('countryPopulation');
     const networkOrganization = document.getElementById('networkOrganization');
-    const infoHeading = document.getElementById('infoHeading');
     const ipLookUp = document.getElementById('ipLookUp');
-    
-    if (calledData) {
-        for (let i = 0; i < calledData.length; i++) {
-            calledData[i].remove();
-        }
-    }
-        let timeout = setTimeout(clearInfo, 10000)
-            userData.style.display = 'flex';
-            infoHeading.style.display = 'block';
+
+    if (user) {
             ipAddress.innerHTML += ` <span class="Called__Data">${user.ip.toString()}</span>`;
             networkIP.innerHTML += ` <span class="Called__Data">${user.network}</span>`;
             cityName.innerHTML += ` <span class="Called__Data">${user.city}</span>`;
@@ -151,18 +164,6 @@ async function renderUserData(user) {
             countryArea.innerHTML += ` <span class="Called__Data">${user['country_area'].toLocaleString('en-US')}</span>`;
             countryPopulation.innerHTML += ` <span class="Called__Data">${user['country_population'].toLocaleString('en-US')}</span>`;
             networkOrganization.innerHTML += ` <span class="Called__Data">${user.org}</span>`;
-}
-
-function clearInfo() {
-    const calledData = document.getElementsByClassName('Called__Data');
-    const userData = document.getElementById('userData');
-    const infoHeading = document.getElementById('infoHeading');
-    if (userData.style.display === 'flex') {
-        infoHeading.style.display = 'none';
-        userData.style.display = 'none';
-        for (let i = 0; i < calledData.length; i++) {
-            calledData[i].remove();
-        }
     }
 }
 
