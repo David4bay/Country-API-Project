@@ -45,7 +45,7 @@ document.addEventListener('click', (e) => {
         default:
             break;
     }
-    console.log(e.target)
+
     /*If modal is present already, remove,
     if countriesList is present already, remove, if
     userData id is 'findMe' set to display none,
@@ -58,7 +58,6 @@ document.addEventListener('click', (e) => {
     
     null;
 
-    console.log(infoTip.innerText);
 })
 
 function showProjectInfo(toggleInfo) {
@@ -80,7 +79,7 @@ function showProjectInfo(toggleInfo) {
     
     
     let hide = setTimeout(() => {
-        infoTip.remove();
+        removeAlert(infoTip);
     }, 8000)
 
         if (toggleInfo) {
@@ -88,7 +87,13 @@ function showProjectInfo(toggleInfo) {
             infoTip.remove();
         }
 
-    console.log(toggleInfo)
+}
+
+function removeAlert(alert) {
+    alert = document.getElementById('alertInfo');
+    if (alert) {
+        alert.remove();
+    }
 }
 
 // Makes call to all countries endpoints to deliver all countries available in api
