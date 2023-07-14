@@ -61,7 +61,13 @@ function showProjectInfo() {
     const infoTip = document.createElement('div');
     const searchHeading = document.querySelector('label.Search__Heading');
     infoTip.style.display = 'none';
-    infoTip.innerHTML = `<strong id="alertInfo" class="Project__Info">Welcome to <span class="Uppercase">Davidbay's IP Lookup</span> project, this site makes use of two IP tracking restful API's, namely the <a href="https://restcountries.com/" target="_blank" rel="noopener_noreffer" class="Link">Restful countries</a> API and the IP tracking service of <a href="https://ipapi.co/" class="Link">IPAPI</a>.</strong>`
+    infoTip.innerHTML = `<strong id="alertInfo" class="Project__Info">Welcome to 
+    <span class="Uppercase">Davidbay's IP Lookup</span> project, 
+    this site makes use of two IP tracking restful API's, 
+    namely the 
+    <a href="https://restcountries.com/" target="_blank" rel="noopener_noreffer" class="Link">Restful countries</a>
+     API and the IP tracking service of 
+     <a href="https://ipapi.co/" class="Link">IPAPI</a>.</strong>`
     infoTip.style.display = 'flex';
     searchHeading.append(infoTip);
 
