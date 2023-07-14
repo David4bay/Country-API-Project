@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
-
+    let toggleInfo = true;
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
@@ -13,6 +13,10 @@ document.addEventListener('click', (e) => {
 
     if (e.target.type === 'button') {
         loadCountry(e);
+    }
+
+    if (infoTip !== null) {
+        showProjectInfo(toggleInfo);
     }
 
     switch(e.target.id) {
@@ -41,7 +45,7 @@ document.addEventListener('click', (e) => {
         default:
             break;
     }
-
+    console.log(e.target)
     /*If modal is present already, remove,
     if countriesList is present already, remove, if
     userData id is 'findMe' set to display none,
@@ -52,30 +56,39 @@ document.addEventListener('click', (e) => {
     
     e.target.id !== 'findMe' ? userData.style.display = 'none' :
     
-    null
+    null;
+
+    console.log(infoTip.innerText);
 })
 
-function showProjectInfo() {
-    let show = true;
-    const infoTip = document.createElement('div');
-    const searchHeading = document.querySelector('label.Search__Heading');
-    infoTip.style.display = 'none';
-    infoTip.innerHTML = `<strong id="alertInfo" class="Project__Info">Welcome to 
-    <span class="Uppercase">Davidbay's IP Lookup</span> project, 
-    this site makes use of two IP tracking restful API's, 
-    namely the 
-    <a href="https://restcountries.com/" target="_blank" rel="noopener_noreffer" class="Link">Restful countries</a>
-     API and the IP tracking service of 
-     <a href="https://ipapi.co/" class="Link">IPAPI</a>.</strong>`
-    infoTip.style.display = 'flex';
-    searchHeading.append(infoTip);
+function showProjectInfo(toggleInfo) {
+    let infoTip = document.getElementById('alertInfo')
+    if (toggleInfo === null || toggleInfo === undefined) {
+        const infoTip = document.createElement('div');
+        const searchHeading = document.querySelector('label.Search__Heading');
+        infoTip.style.display = 'none';
+        infoTip.innerHTML = `<strong id="alertInfo" class="Project__Info">Welcome to 
+        <span class="Uppercase">Davidbay's IP Lookup</span> project, 
+        this site makes use of two IP tracking restful API's, 
+        namely the 
+        <a href="https://restcountries.com/" target="_blank" rel="noopener_noreffer" class="Link">Restful countries</a>
+         API and the IP tracking service of 
+         <a href="https://ipapi.co/" class="Link">IPAPI</a>.</strong>`
+        infoTip.style.display = 'flex';
+        searchHeading.append(infoTip);
+    }
+    
+    
+    let hide = setTimeout(() => {
+        infoTip.remove();
+    }, 8000)
 
-    setTimeout(() => {
-        show = false;
-        if (!show) {
+        if (toggleInfo) {
+            clearTimeout(hide);
             infoTip.remove();
         }
-    }, 8000)
+
+    console.log(toggleInfo)
 }
 
 // Makes call to all countries endpoints to deliver all countries available in api
