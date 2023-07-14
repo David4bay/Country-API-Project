@@ -105,23 +105,9 @@ async function fetchData() {
         const response = await fetch('https://ipapi.co/json');
         const data = await response.json();
         renderUserData(data);
-    } catch () {
-        renderError()
-        // console.error('Error:', error);
+    } catch (error) {
+        console.error('Error:', error);
     }
-}
-
-function renderError() {
-    const searchTitle = document.querySelector('.Search__Heading');
-    const errorInfo = document.createElement('div');
-    errorInfo.setAttribute('class', 'Error__Tip');
-    errorInfo.setAttribute('id', 'errorDisplay');
-    const errorId = document.getElementById('errorDisplay');
-        searchTitle.style.position = 'relative';
-        errorId.style.position = 'absolute';
-        errorId.style.top = '-100%';
-        errorId.innerText = 'Unfortunately, your search failed!';
-        searchTitle.apprend(errorId);
 }
 
 // renders the users ip info
