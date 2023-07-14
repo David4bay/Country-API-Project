@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
-    console.log(e.target.id)
 
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
