@@ -320,6 +320,20 @@ a {
     margin-right: auto;
     inset: 0;
 }
+
+.Project__Info {
+    width: 25vw;
+    position: absolute;
+    inset: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.Link {
+    color: orangered;
+    font-size: large;
+    text-decoration: none;
+}
 }
 
 // media query for desktop screen sizes
@@ -645,5 +659,35 @@ a {
         margin-left: auto;
         margin-right: auto;
         inset: 0;
+    }
+
+    .Project__Info {
+        width: 60%;
+        font-size: clamp(1vw, 18px, 22px);
+        position: absolute;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        inset: 0;
+        background-color: #fff;
+        height: max-content;
+        padding: 15px;
+        letter-spacing: 1px;
+        line-height: 1.8;
+        border-radius: 5px;
+    }
+
+    .Link {
+        font-family: Verdana, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: orangered;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
+    .Uppercase {
+        text-transform: uppercase;
+        color: #555aa4;
     }
 }

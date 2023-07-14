@@ -3,45 +3,75 @@ document.addEventListener('DOMContentLoaded', fetchData);
 
 // Waits for a click event then performs actions
 document.addEventListener('click', (e) => {
+    console.log(e.target.id)
 
     const ipLookUp = document.getElementById('ipLookUp');
     const body = document.body;
     const modal = document.getElementById('countryDataContainer');
     const countriesList = document.getElementById('listedCountries');
     const userData = document.getElementById('userData');
+    const infoTip = document.getElementById('alertInfo');
 
     if (e.target.type === 'button') {
         loadCountry(e);
     }
 
     switch(e.target.id) {
+        
         case 'button':
-        loadCountry(e);
-        break;
+            loadCountry(e);
+            break;
         case 'countriesList':
-        loadCountriesList();
-        break;
+            loadCountriesList();
+            break;
         case 'listedCountries':
-        e.target.remove();
-        break;
+            e.target.remove();
+            break;
         case 'individualCountry':
-        loadCountry(e);
-        break;
+            loadCountry(e);
+            break;
         case 'findMe':
-        hideData();
-        break;
+            hideData();
+            break;
+        case 'projectInfo':
+            showProjectInfo();
+            break;
+        case 'alertInfo':
+            infoTip.remove();
+            break;
         default:
-        break;
+            break;
     }
 
     /*If modal is present already, remove,
-    if countriesList is present already, remove or
-    do nothing */
+    if countriesList is present already, remove, if
+    userData id is 'findMe' set to display none,
+    or return nothing */
     modal ? body.removeChild(modal) :
+
     countriesList ? countriesList.remove() : 
+    
     e.target.id !== 'findMe' ? userData.style.display = 'none' :
+    
     null
 })
+
+function showProjectInfo() {
+    let show = true;
+    const infoTip = document.createElement('div');
+    const searchHeading = document.querySelector('label.Search__Heading');
+    infoTip.style.display = 'none';
+    infoTip.innerHTML = `<strong id="alertInfo" class="Project__Info">Welcome to <span class="Uppercase">Davidbay's IP Lookup</span> project, this site makes use of two IP tracking restful API's, namely the <a href="https://restcountries.com/" target="_blank" rel="noopener_noreffer" class="Link">Restful countries</a> API and the IP tracking service of <a href="https://ipapi.co/" class="Link">IPAPI</a>.</strong>`
+    infoTip.style.display = 'flex';
+    searchHeading.append(infoTip);
+
+    setTimeout(() => {
+        show = false;
+        if (!show) {
+            infoTip.remove();
+        }
+    }, 8000)
+}
 
 // Makes call to all countries endpoints to deliver all countries available in api
 function loadCountriesList() {
