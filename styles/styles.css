@@ -390,7 +390,7 @@ body {
     padding: 20px;
     box-shadow: -2px 2px 0px 4px #000;
     cursor: pointer;
-    transition: all 0.1s ease;
+    transition: transform 0.1s ease;
     scroll-behavior: smooth;
   }
   .Individual__Country:hover {
@@ -435,6 +435,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 80vw;
+    padding: 100px;
     height: -webkit-max-content;
     height: -moz-max-content;
     height: max-content;
@@ -603,10 +604,12 @@ body {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
     inset: 0;
   }
   .Project__Info {
-    width: 60%;
+    width: 80%;
     font-size: clamp(1vw, 18px, 22px);
     position: absolute;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
